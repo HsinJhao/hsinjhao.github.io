@@ -1,0 +1,1058 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.1">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.1" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.1.1',
+    sidebar: {"position":"left","display":"always","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: true,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="前言由于之前的算法编写、调试等过程均在自己的电脑上运行，所以出于以下原因一直对Anaconda嗤之以鼻：  其存储空间有限，Anaconda会安装很多使用率很低的库； 本人有一种莫名的折腾的劲儿，喜欢精简而有效的原生python环境。  但最近为课题组在Windows Server 2019搭建服务器深度学习开发环境时，在构建原生python环境中(其实就是安装tensorflow这个磨人的小">
+<meta name="keywords" content="Anaconda,Deep Learning">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Anaconda初体验(windows)">
+<meta property="og:url" content="http://yoursite.com/2019/05/16/AnacondaFistExperience/AnacondaFistExperience/index.html">
+<meta property="og:site_name" content="HsinJhao&#39;s Blogs">
+<meta property="og:description" content="前言由于之前的算法编写、调试等过程均在自己的电脑上运行，所以出于以下原因一直对Anaconda嗤之以鼻：  其存储空间有限，Anaconda会安装很多使用率很低的库； 本人有一种莫名的折腾的劲儿，喜欢精简而有效的原生python环境。  但最近为课题组在Windows Server 2019搭建服务器深度学习开发环境时，在构建原生python环境中(其实就是安装tensorflow这个磨人的小">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://repo.continuum.io/assets/img/logo.png">
+<meta property="og:image" content="http://yoursite.com/2019/05/16/AnacondaFistExperience/AnacondaFistExperience/Anaconda%E4%BF%AE%E6%94%B9python%E7%89%88%E6%9C%AC.png">
+<meta property="og:image" content="http://yoursite.com/2019/05/16/AnacondaFistExperience/AnacondaFistExperience/tensorflow-cpu-dependency.png">
+<meta property="og:image" content="http://yoursite.com/2019/05/16/AnacondaFistExperience/AnacondaFistExperience/tensorflow-gpu-dependency-win.png">
+<meta property="og:image" content="http://yoursite.com/2019/05/16/AnacondaFistExperience/AnacondaFistExperience/pytorch-setup.png">
+<meta property="og:updated_time" content="2019-05-17T08:17:18.906Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Anaconda初体验(windows)">
+<meta name="twitter:description" content="前言由于之前的算法编写、调试等过程均在自己的电脑上运行，所以出于以下原因一直对Anaconda嗤之以鼻：  其存储空间有限，Anaconda会安装很多使用率很低的库； 本人有一种莫名的折腾的劲儿，喜欢精简而有效的原生python环境。  但最近为课题组在Windows Server 2019搭建服务器深度学习开发环境时，在构建原生python环境中(其实就是安装tensorflow这个磨人的小">
+<meta name="twitter:image" content="https://repo.continuum.io/assets/img/logo.png">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="http://yoursite.com/2019/05/16/AnacondaFistExperience/AnacondaFistExperience/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Anaconda初体验(windows) | HsinJhao's Blogs</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">HsinJhao's Blogs</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-标签">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-分类">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-存档">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>存档</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-commonweal">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/404/" rel="section"><i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br>公益 404</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/16/AnacondaFistExperience/AnacondaFistExperience/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="HsinJhao">
+      <meta itemprop="description" content="“与恶龙缠斗过久，自身亦成为恶龙；凝视深渊过久，深渊将回以凝视。”">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="HsinJhao's Blogs">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Anaconda初体验(windows)
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+            
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-05-16 15:07:47" itemprop="dateCreated datePublished" datetime="2019-05-16T15:07:47+08:00">2019-05-16</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-05-17 16:17:18" itemprop="dateModified" datetime="2019-05-17T16:17:18+08:00">2019-05-17</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/软件使用/" itemprop="url" rel="index"><span itemprop="name">软件使用</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">2.8k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">5 分钟</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="https://repo.continuum.io/assets/img/logo.png" alt="Anaconda"></p>
+<hr>
+<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>由于之前的算法编写、调试等过程均在自己的电脑上运行，所以出于以下原因一直对Anaconda嗤之以鼻：</p>
+<ul>
+<li>其存储空间有限，Anaconda会安装很多<code>使用率很低</code>的库；</li>
+<li>本人有一种莫名的<code>折腾</code>的劲儿，喜欢精简而有效的原生python环境。</li>
+</ul>
+<p>但最近为课题组在<strong>Windows Server 2019</strong>搭建服务器深度学习开发环境时，在构建原生python环境中(其实就是安装<strong>tensorflow</strong>这个磨人的小妖精)屡屡受挫，<br>不再想理什么<code>DLL Load fail</code>、<code>ImportError</code>；并且服务器非我一人使用，有人习惯Anaconda，故尝试直接将Anaconda的python环境<br>作为系统默认Python开发环境。以下是个人的折腾记录。</p>
+<hr>
+<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><p>安装推荐官网下载对应平台的程序安装包，此处贴出<a href="https://www.anaconda.com/distribution/" target="_blank" rel="noopener">Anaconda官网地址</a>。
+若要下载历史版本，可见<a href="https://repo.continuum.io/archive/" target="_blank" rel="noopener">链接</a>。</p>
+<p>需要注意的是，每一版的Anaconda都与某一版本的Python版本有所关联，如果不想后期更改<code>base(root)</code>环境或新建其他python版本环境的话，最好选择某一版本的Anaconda<br>进行安装。二者版本对应情况可见<a href="https://blog.csdn.net/yuejisuo1948/article/details/81043823" target="_blank" rel="noopener">链接</a>。
+在安装过程中，注意以下几个设置：</p>
+<ul>
+<li>安装路径</li>
+<li>是否添加Anacona至环境变量</li>
+<li>是否设置Anaconda所安装的python为默认python环境</li>
+</ul>
+<p>其中安装路径根据实际情况进行设置。笔者一般软件安装路径为非系统盘，如<code>D:\Anaconda3</code>(后续Anaconda的安装路径将写作此路径).若你本机上已安装了python，后两者均不建议进行设置，因为其会改变<br>系统变量中的python环境变量。如有需要，后续可进行更改。如：</p>
+<ul>
+<li><p>添加Anacona至环境变量：添加以下地址至环境变量</p>
+ <figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">D:\<span class="title">Anaconda3</span></span></span><br><span class="line"><span class="function"><span class="title">D</span>:\<span class="title">Anaconda3</span>\<span class="title">Library</span></span></span><br><span class="line"><span class="function"><span class="title">D</span>:\<span class="title">Anaconda3</span>\<span class="title">Scripts</span></span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<hr>
+<h1 id="直接更改base-root-环境下的python版本"><a href="#直接更改base-root-环境下的python版本" class="headerlink" title="直接更改base(root)环境下的python版本"></a>直接更改base(root)环境下的python版本</h1><p>此需求大多是为安装tensorflow-gpu而衍生出，因为其对python版本、CUDA等要求甚严。假设需要将默认的python版本(3.7.3)更改为3.6.8，<br>可参考以下两种方式(<a href="https://blog.csdn.net/isyiming/article/details/79225608" target="_blank" rel="noopener">参考链接</a>)：</p>
+<h2 id="Anaconda-Navigator中进行更改"><a href="#Anaconda-Navigator中进行更改" class="headerlink" title="Anaconda Navigator中进行更改"></a>Anaconda Navigator中进行更改</h2><p>打开Anaconda Navigator，找到Environment中base(root)下已安装的python,右键图标进行更改，如下图：</p>
+<ul>
+<li>点击<code>base</code>切换到python环境</li>
+<li>搜索已安装的<code>python</code>库</li>
+<li>右键点击<code>python</code>可出现<code>Mark for specific version installation</code>选项</li>
+<li>点击想切换的<code>python</code>版本代号</li>
+<li>点击页面下方<code>apply</code>按钮即可执行修改(图中未显示)<br><img src="Anaconda%E4%BF%AE%E6%94%B9python%E7%89%88%E6%9C%AC.png" alt="Anaconda修改python版本"></li>
+</ul>
+<h2 id="Anaconda-Prompt中进行更改"><a href="#Anaconda-Prompt中进行更改" class="headerlink" title="Anaconda Prompt中进行更改"></a>Anaconda Prompt中进行更改</h2><p>直接打开终端或者Anaconda Prompt,输入以下命令：</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda install python=<span class="number">3</span>.<span class="number">6</span>.<span class="number">8</span></span><br></pre></td></tr></table></figure>
+
+<p>若不对默认的base(root)环境进行修改，也可以直接新建相应python版本的环境，以满足需求。在此不做赘述。</p>
+<hr>
+<h1 id="Anaconda-Channels-无法更改后的折衷方案"><a href="#Anaconda-Channels-无法更改后的折衷方案" class="headerlink" title="Anaconda Channels 无法更改后的折衷方案"></a>Anaconda Channels 无法更改后的折衷方案</h1><p>众所周知，由于<code>GFW</code>的原因，国外诸多网站在国内无法正常访问。于是催生出了一系列国内源镜像，为大家提供方便。原本Anaconda在国内也是有镜像源地址的，但是最近由于版权或商标问题，国内诸多镜像地址，如<a href="https://mirrors.tuna.tsinghua.edu.cn/" target="_blank" rel="noopener">清华大学镜像</a>、<a href="http://mirrors.ustc.edu.cn/" target="_blank" rel="noopener">中科大镜像</a>、<a href="http://mirrors.nju.edu.cn/" target="_blank" rel="noopener">南京大学镜像</a>等镜像网站均关闭了对conda源的支持,直接将其链接至官方镜像地址。以下是相关情况的说明和更新：</p>
+<ul>
+<li><a href="https://mirrors.tuna.tsinghua.edu.cn/news/close-anaconda-service/" target="_blank" rel="noopener">2019-04-16:清华大学关于停止Anaconda镜像服务的通知</a></li>
+<li><a href="https://servers.ustclug.org/2019/04/close-anaconda-service/" target="_blank" rel="noopener">2019-04-25:中科大Anaconda 镜像停止服务</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/62899936" target="_blank" rel="noopener">知乎:Anaconda 清华源关闭后，怎么办？</a></li>
+</ul>
+<p>所以目前修改Anaconda Channels基本无效，除非是自己搭梯子。否则就自己用官方源慢慢安装和更新吧(<strong>亲测要等很久才能安装上一个库</strong>)。若针对已成功安装Anaconda的用户来说，可以激活Anaconda环境后，用pip命令对第三方库进行安装或者更新。这是一个折衷的方法了。因为pip在国内的镜像地址是可以用的，其中清华的镜像是比较快的。关于修改pip源镜像的地址，可以参考<a href="https://foofish.net/pip.html" target="_blank" rel="noopener">此链接</a>。</p>
+<hr>
+<h1 id="Anaconda安装深度学习框架"><a href="#Anaconda安装深度学习框架" class="headerlink" title="Anaconda安装深度学习框架"></a>Anaconda安装深度学习框架</h1><p>无论是tensorflow还是PyTorch，在GPU的环境下更能发挥其加速作用。安装cpu版本的深度学习框架配置起来较为简单顺畅，在此不做赘述，可自行百度。</p>
+<h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><p>由于利用Anaconda搭建基于Tensorflow或Pytorch的深度学习框架不需要自己安装其他的依赖性，所以个人推荐此方法。若想自己根据原生python搭建上述框架，便需要自行进行以下操作：</p>
+<ul>
+<li>确认自己具有Nvidia的显卡，安装最新<a href="https://www.nvidia.com/Download/index.aspx?lang=cn" target="_blank" rel="noopener">Nvidia显卡驱动</a></li>
+<li>安装<a href="https://developer.nvidia.com/cuda-downloads" target="_blank" rel="noopener">CUDA</a></li>
+<li>安装<a href="https://developer.nvidia.com/rdp/cudnn-download" target="_blank" rel="noopener">cudnn</a></li>
+</ul>
+<p>需要注意的是，cudnn需要注册Nvidia开发者账户才可以进行下载。其中与tensorflow或pytorch的版本需要一一对应，tensorflow所支持的cuda对应版本可查看<a href="https://www.tensorflow.org/install/source_windows" target="_blank" rel="noopener">此链接</a>寻找适合的版本或参考以下图片：</p>
+<p><img src="tensorflow-cpu-dependency.png" alt="tensorflow-cpu-win-dependency"><br><img src="tensorflow-gpu-dependency-win.png" alt="tensorflow-gpu-win-dependency"></p>
+<h2 id="Anaconda安装Tensorflow"><a href="#Anaconda安装Tensorflow" class="headerlink" title="Anaconda安装Tensorflow"></a>Anaconda安装Tensorflow</h2><p>在Anaconda中安装Tensorflow的过程还是较为简单的，只需要搜索到相应的Tensorflow库，然后选择对应的版本安装即可。因为其会根据所选择的tensorflow版本安装对应的<strong>cuda</strong>和<strong>cudnn</strong>以支持GPU加速。</p>
+<h2 id="Anaconda安装Pytorch"><a href="#Anaconda安装Pytorch" class="headerlink" title="Anaconda安装Pytorch"></a>Anaconda安装Pytorch</h2><p>Pytorch的安装更加人性化，不需要进行各种配置，版本之间的依赖也较少。可以直接选择与cuda相对应版本的pytorch进行安装，如下图：<br><img src="pytorch-setup.png" alt="Pytorch安装"></p>
+<h2 id="安装测试"><a href="#安装测试" class="headerlink" title="安装测试"></a>安装测试</h2><p>安装上述环境后均需要进行测试，查看是否能够正常使用。<br>打开cmd并启动python开发环境后，可输入以下测试代码进行测试：</p>
+<ul>
+<li><blockquote>
+<p>Tensorflow-gpu测试代码</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line">matrix1 = tf.constant([[<span class="number">3.</span>, <span class="number">3.</span>]])     </span><br><span class="line">matrix2 = tf.constant([[<span class="number">2.</span>],[<span class="number">2.</span>]])    </span><br><span class="line">product = tf.matmul(matrix1, matrix2) </span><br><span class="line">sess = tf.Session()</span><br><span class="line">print(sess.run(product))</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>若输出的信息中有显卡信息，并且没有报错，成功输出结果，则安装成功，可正常使用tensorflow-gpu。</p>
+<ul>
+<li><blockquote>
+<p>Pytorch-gpu测试代码</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line">torch.cuda.is_available()</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>输出<code>true</code>，则说明GPU驱动和CUDA可以支持Pytorch的加速计算。</p>
+<h1 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h1><p>上述是简单的Anaconda安装和深度学习框架搭建基本流程。如需了解细节可阅读相应参考链接。</p>
+
+      
+    </div>
+
+    
+      
+
+
+    
+
+    
+    
+    
+    <div>
+      
+        <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">--------End--------</div>
+    
+</div>
+      
+    </div>
+
+    
+
+    
+      
+    
+    
+      <div>
+        <div id="reward-container">
+  <div>坚持知识分享,您的支持将鼓励我继续创作!</div>
+  <button id="reward-button" disable="enable" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+
+    
+      
+      
+        
+      
+      <div style="display: inline-block">
+        <img src="/images/wechatpay.png" alt="HsinJhao 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+      
+      
+        
+      
+      <div style="display: inline-block">
+        <img src="/images/alipay.jpg" alt="HsinJhao 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Anaconda/" rel="tag"><i class="fa fa-tag"></i> Anaconda</a>
+          
+            <a href="/tags/Deep-Learning/" rel="tag"><i class="fa fa-tag"></i> Deep Learning</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/05/16/BuildBlogsBasedOnHexoAndGithub/BuildBlogsBasedOnHexoAndGithub/" rel="prev" title="利用hexo和github搭建个人博客的辛酸之路">
+                利用hexo和github搭建个人博客的辛酸之路 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="gitalk-container">
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">HsinJhao</p>
+              <div class="site-description motion-element" itemprop="description">“与恶龙缠斗过久，自身亦成为恶龙；凝视深渊过久，深渊将回以凝视。”</div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives">
+                
+                    <span class="site-state-item-count">2</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">2</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">4</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#安装"><span class="nav-number">2.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#直接更改base-root-环境下的python版本"><span class="nav-number">3.</span> <span class="nav-text">直接更改base(root)环境下的python版本</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Anaconda-Navigator中进行更改"><span class="nav-number">3.1.</span> <span class="nav-text">Anaconda Navigator中进行更改</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Anaconda-Prompt中进行更改"><span class="nav-number">3.2.</span> <span class="nav-text">Anaconda Prompt中进行更改</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Anaconda-Channels-无法更改后的折衷方案"><span class="nav-number">4.</span> <span class="nav-text">Anaconda Channels 无法更改后的折衷方案</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Anaconda安装深度学习框架"><span class="nav-number">5.</span> <span class="nav-text">Anaconda安装深度学习框架</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#准备工作"><span class="nav-number">5.1.</span> <span class="nav-text">准备工作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Anaconda安装Tensorflow"><span class="nav-number">5.2.</span> <span class="nav-text">Anaconda安装Tensorflow</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Anaconda安装Pytorch"><span class="nav-number">5.3.</span> <span class="nav-text">Anaconda安装Pytorch</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装测试"><span class="nav-number">5.4.</span> <span class="nav-text">安装测试</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#结语"><span class="nav-number">6.</span> <span class="nav-text">结语</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">HsinJhao</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+    <span title="站点总字数">6k</span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    
+    <span title="站点阅读时长">11 分钟</span>
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.1.1</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.1"></script>
+
+  <script src="/js/motion.js?v=7.1.1"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/affix.js?v=7.1.1"></script>
+
+  <script src="/js/schemes/pisces.js?v=7.1.1"></script>
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.1"></script>
+<script src="/js/post-details.js?v=7.1.1"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.1"></script>
+
+
+  
+
+  
+
+  
+
+  
+  
+    
+
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+
+
+<script src="//cdn.jsdelivr.net/npm/js-md5@0.7.3/src/md5.min.js"></script>
+
+<script>
+  var gitalk = new Gitalk({
+    clientID: '436d1efb3c5f89d6ec5b',
+    clientSecret: 'd4b1a1534d187bc80939f3fe2d0713c58f0a7a97',
+    repo: 'hsinjhao.github.io',
+    owner: 'HsinJhao',
+    admin: ['HsinJhao'],
+    id: md5(location.pathname),
+    
+      language: 'zh-CN',
+    
+    distractionFreeMode: 'true'
+  });
+  gitalk.render('gitalk-container');
+</script>
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,1074 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.1">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.1" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.1.1',
+    sidebar: {"position":"left","display":"always","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: true,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="由于个人强迫症，希望将自己值得记录下来的东西通过一种合理的方式进行记录。于是选择了搭建个人博客的方式来实现。通过知乎和面向Google编程后发现利用hexo和github pages来搭建个人博客的方式，最适合我这种穷学生折腾。  搭建博客基本框架准备工作在搭建之间，需要先安装以下应用程序和注册相应账户以满足依赖项：  安装Node.js 安装Git 安装Hexo 注册Github账号  上述步骤">
+<meta name="keywords" content="Hexo,Github">
+<meta property="og:type" content="article">
+<meta property="og:title" content="利用hexo和github搭建个人博客的辛酸之路">
+<meta property="og:url" content="http://yoursite.com/2019/05/16/BuildBlogsBasedOnHexoAndGithub/BuildBlogsBasedOnHexoAndGithub/index.html">
+<meta property="og:site_name" content="HsinJhao&#39;s Blogs">
+<meta property="og:description" content="由于个人强迫症，希望将自己值得记录下来的东西通过一种合理的方式进行记录。于是选择了搭建个人博客的方式来实现。通过知乎和面向Google编程后发现利用hexo和github pages来搭建个人博客的方式，最适合我这种穷学生折腾。  搭建博客基本框架准备工作在搭建之间，需要先安装以下应用程序和注册相应账户以满足依赖项：  安装Node.js 安装Git 安装Hexo 注册Github账号  上述步骤">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://docs.npmjs.com/assets/images/packages-and-modules/audit-report-vulns-found-manual-review.png">
+<meta property="og:updated_time" content="2019-05-17T13:27:27.754Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="利用hexo和github搭建个人博客的辛酸之路">
+<meta name="twitter:description" content="由于个人强迫症，希望将自己值得记录下来的东西通过一种合理的方式进行记录。于是选择了搭建个人博客的方式来实现。通过知乎和面向Google编程后发现利用hexo和github pages来搭建个人博客的方式，最适合我这种穷学生折腾。  搭建博客基本框架准备工作在搭建之间，需要先安装以下应用程序和注册相应账户以满足依赖项：  安装Node.js 安装Git 安装Hexo 注册Github账号  上述步骤">
+<meta name="twitter:image" content="https://docs.npmjs.com/assets/images/packages-and-modules/audit-report-vulns-found-manual-review.png">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="http://yoursite.com/2019/05/16/BuildBlogsBasedOnHexoAndGithub/BuildBlogsBasedOnHexoAndGithub/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>利用hexo和github搭建个人博客的辛酸之路 | HsinJhao's Blogs</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">HsinJhao's Blogs</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-标签">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-分类">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-存档">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>存档</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-commonweal">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/404/" rel="section"><i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br>公益 404</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/16/BuildBlogsBasedOnHexoAndGithub/BuildBlogsBasedOnHexoAndGithub/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="HsinJhao">
+      <meta itemprop="description" content="“与恶龙缠斗过久，自身亦成为恶龙；凝视深渊过久，深渊将回以凝视。”">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="HsinJhao's Blogs">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">利用hexo和github搭建个人博客的辛酸之路
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+            
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-05-16 21:36:39" itemprop="dateCreated datePublished" datetime="2019-05-16T21:36:39+08:00">2019-05-16</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-05-17 21:27:27" itemprop="dateModified" datetime="2019-05-17T21:27:27+08:00">2019-05-17</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/博客搭建/" itemprop="url" rel="index"><span itemprop="name">博客搭建</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">3.5k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">6 分钟</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>由于个人强迫症，希望将自己值得记录下来的东西通过一种合理的方式进行记录。于是选择了搭建个人博客的方式来实现。通过<em>知乎</em>和<em>面向Google编程</em>后发现利用<code>hexo</code>和<code>github pages</code>来搭建个人博客的方式，最适合我这种穷学生折腾。</p>
+<hr>
+<h1 id="搭建博客基本框架"><a href="#搭建博客基本框架" class="headerlink" title="搭建博客基本框架"></a>搭建博客基本框架</h1><h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><p>在搭建之间，需要先安装以下应用程序和注册相应账户以满足依赖项：</p>
+<ul>
+<li>安装Node.js</li>
+<li>安装Git</li>
+<li>安装Hexo</li>
+<li>注册Github账号</li>
+</ul>
+<p>上述步骤最好依次进行，并可参考相应链接，避免踩坑。相应教程在下节给出。</p>
+<p>值得说明的一点是，虽然此搭建博客的方案基本免费，但希望根据个人需求来进行选择。若除开博客功能外不再使用Github其他功能，专门注册账户来实现博客搭建而导致资源浪费，个人不太推崇。若自己想更安全更自由的搭建方式，个人建议注册相应域名。</p>
+<h2 id="搭建教程"><a href="#搭建教程" class="headerlink" title="搭建教程"></a>搭建教程</h2><p>个人在搭建过程中参考了以下搭建教程，在此感谢前人铺路。</p>
+<ul>
+<li><a href="https://godweiyang.com/2018/04/13/hexo-blog/" target="_blank" rel="noopener">超详细Hexo+Github博客搭建小白教程</a>:按照此教程，基本能搭建好初步框架。并且其中还有部分骚操作，比如插入<em>网易云音乐</em>播放链接等。可主要依靠此教程完成大致搭建工作。</li>
+<li><a href="https://zhuanlan.zhihu.com/p/28329874" target="_blank" rel="noopener">Hexo与Github搭建个人博客</a>:知乎这篇博文与上一个教程可相互补充，此博文为辅。</li>
+</ul>
+<hr>
+<h1 id="自定义博客内容"><a href="#自定义博客内容" class="headerlink" title="自定义博客内容"></a>自定义博客内容</h1><h2 id="博客功能添加"><a href="#博客功能添加" class="headerlink" title="博客功能添加"></a>博客功能添加</h2><p>在搭建完博客的基本框架后，可以对以下内容进行自定义：</p>
+<h3 id="绑定个人域名"><a href="#绑定个人域名" class="headerlink" title="绑定个人域名"></a>绑定个人域名</h3><h3 id="添加标签"><a href="#添加标签" class="headerlink" title="添加标签"></a>添加标签</h3><h3 id="添加分类"><a href="#添加分类" class="headerlink" title="添加分类"></a>添加分类</h3><h3 id="添加目录"><a href="#添加目录" class="headerlink" title="添加目录"></a>添加目录</h3><h3 id="添加评论"><a href="#添加评论" class="headerlink" title="添加评论"></a>添加评论</h3><h3 id="添加搜索"><a href="#添加搜索" class="headerlink" title="添加搜索"></a>添加搜索</h3><h3 id="添加音乐外链播放器"><a href="#添加音乐外链播放器" class="headerlink" title="添加音乐外链播放器"></a>添加音乐外链播放器</h3><h3 id="添加字数统计和阅读时长功能"><a href="#添加字数统计和阅读时长功能" class="headerlink" title="添加字数统计和阅读时长功能"></a>添加字数统计和阅读时长功能</h3><p>Hexo的Next主题中默认是通过插件<code>hexo-symbols-count-time</code>实现的，通过git bash定位到博客根目录(如<code>E:\Blogs</code>)下后根据以下命令安装上述插件：</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-symbols-count-<span class="built_in">time</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>注：有教程是安装<code>hexo-wordcount</code>来实现字数统计功能，但是需要修改太多东西，较为繁琐，故个人建议实验Next主题默认的<code>hexo-symbols-count-time</code>插件来实现上述功能。如需利用<code>hexo-wordcount</code>来实现，可参考<a href="https://eason-yang.com/2016/11/05/add-word-count-to-hexo-next/" target="_blank" rel="noopener">此链接</a>。</p>
+</blockquote>
+<p>然后需要修改主题配置文件和站点配置文件：</p>
+<ul>
+<li>修改站点配置文件<code>hexo _config.yml</code>：<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">symbols_count_time:</span></span><br><span class="line"><span class="function"><span class="title">symbols</span>: <span class="title">true</span> # 文章字数</span></span><br><span class="line"><span class="function"><span class="title">time</span>: <span class="title">true</span> # 阅读时长</span></span><br><span class="line"><span class="function"><span class="title">total_symbols</span>: <span class="title">true</span> # 所有文章总字数</span></span><br><span class="line"><span class="function"><span class="title">total_time</span>: <span class="title">true</span> # 所有文章阅读中时长</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<blockquote>
+<p>此文件为博客显示的基础配置，修改后需要重启服务才能更新博客内容。</p>
+</blockquote>
+<ul>
+<li>修改主题配置文件<code>next _config.yml</code>:<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">symbols_count_time:</span></span><br><span class="line"><span class="function"><span class="title">separated_meta</span>: <span class="title">true</span>  # 是否换行显示 字数统计 及 阅读时长</span></span><br><span class="line"><span class="function"><span class="title">item_text_post</span>: <span class="title">true</span>  # 文章 字数统计 阅读时长 使用图标 还是 文本表示</span></span><br><span class="line"><span class="function"><span class="title">item_text_total</span>: <span class="title">false</span> # 博客底部统计 字数统计 阅读时长 使用图标 还是 文本表示</span></span><br><span class="line"><span class="function"><span class="title">awl</span>: 4</span></span><br><span class="line"><span class="function"><span class="title">wpm</span>: 275</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>具体字段含义可查看<a href="https://github.com/theme-next/hexo-symbols-count-time" target="_blank" rel="noopener">官方链接</a>.</p>
+<h3 id="修改代码高亮样式"><a href="#修改代码高亮样式" class="headerlink" title="修改代码高亮样式"></a>修改代码高亮样式</h3><p>在Next主题下，修改代码高亮样式通过修改主题配置文件<code>themes/next/_config.yml</code>中找到以下代码段修改<code>highlight_theme</code>字段实现：</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># Code Highlight theme</span><br><span class="line"># Available values: normal | night | night eighties | night blue | night bright #格式样式，具体显示效果可查看以下链接</span><br><span class="line"># https://github.com/chriskempson/tomorrow-theme</span><br><span class="line"><span class="function">highlight_theme: <span class="title">normal</span> #可修改为<span class="title">night</span>模式</span></span><br></pre></td></tr></table></figure>
+
+<p>相应的参考博客链接如下：</p>
+<ul>
+<li><p><a href="https://vslam.net/2018/03/04/Hexo%E4%BD%BF%E7%94%A8%E6%94%BB%E7%95%A5-%E6%B7%BB%E5%8A%A0%E5%88%86%E7%B1%BB%E5%8F%8A%E6%A0%87%E7%AD%BE/" target="_blank" rel="noopener"><strong>Hexo使用攻略-添加分类标签和搜索功能</strong></a></p>
+</li>
+<li><p><a href="https://www.jianshu.com/p/e17711e44e00" target="_blank" rel="noopener"><strong>Hexo使用攻略-添加分类及标签</strong></a></p>
+</li>
+<li><p><a href="https://hexo.io/zh-cn/docs/" target="_blank" rel="noopener">Hexo官方网站</a></p>
+</li>
+<li><p><a href="https://blog.csdn.net/wugenqiang/article/details/88609066" target="_blank" rel="noopener"><strong>Hexo的Next主题开启文章目录和调整样式</strong></a>:Next主题下和默认主题添加文章目录的方式不太一样。</p>
+</li>
+<li><p><a href="http://charmlegal.com/2017/12/05/article6/" target="_blank" rel="noopener">Hexo—如何设置文章目录(TOC)</a></p>
+</li>
+<li><p><a href="http://kuangqi.me/tricks/enable-table-of-contents-on-hexo/#%E4%BF%AE%E6%94%B9Landscape%E4%B8%BB%E9%A2%98%E7%9A%84ejs%E6%96%87%E4%BB%B6" target="_blank" rel="noopener">为Hexo博客默认主题添加目录</a></p>
+</li>
+<li><p><a href="https://shjhe.github.io/hexo/2018/07/04/Hexo%20Next%E4%B8%BB%E9%A2%98%E5%BC%80%E5%90%AF%E5%AD%97%E6%95%B0%E7%BB%9F%E8%AE%A1%E5%8F%8A%E9%98%85%E8%AF%BB%E6%97%B6%E9%95%BF/" target="_blank" rel="noopener"><strong>Hexo Next主题开启字数统计及阅读时长</strong></a></p>
+</li>
+<li><p><a href="https://zhaliezhi.com/posts/1e17d9f3.html" target="_blank" rel="noopener">Hexo + Next 折腾小记</a>：有关于字体、图片边框、社交链接居中显示、文章目录隐藏、代码高亮样式修改等。</p>
+</li>
+<li><p><a href="https://yashuning.github.io/2018/06/29/hexo-Next-%E4%B8%BB%E9%A2%98%E6%B7%BB%E5%8A%A0%E8%AF%84%E8%AE%BA%E5%8A%9F%E8%83%BD/" target="_blank" rel="noopener">hexo - Next 主题添加评论功能</a>：使用Valine评论系统</p>
+</li>
+</ul>
+<h2 id="博客写作注意事项"><a href="#博客写作注意事项" class="headerlink" title="博客写作注意事项"></a>博客写作注意事项</h2><h3 id="插入图片"><a href="#插入图片" class="headerlink" title="插入图片"></a>插入图片</h3><p>在Hexo博客中插入图片有两种方式：</p>
+<h4 id="本地引用"><a href="#本地引用" class="headerlink" title="本地引用"></a>本地引用</h4><ul>
+<li><p>绝对路径:<br>当Hexo项目中只用到少量图片时，可以将图片统一放在<code>source/images</code>文件夹中，通过markdown语法访问它们。这种引用方式下引用的图片既可以在首页内容中访问到，也可以在文章正文中访问到。</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">![<span class="string">image-name</span>](<span class="link">/images/image.jpg</span>)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>相对路径:<br>图片也可以采用相对路径，即在文章所属的文件夹中，从而使用相对路径来访问。文章的目录通过配置<code>_config.yml</code>来进行生成。</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">post_asset_folder: <span class="title">true</span></span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>将<code>_config.yml</code>文件中的配置项<code>post_asset_folder</code>设为<code>true</code>后，执行命令:</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new post_name</span><br></pre></td></tr></table></figure>
+
+<p> 在<code>source/_posts</code>中会生成文章<code>post_name.md</code>和同名文件夹<code>post_name</code>。将图片资源放在post_name中，文章就可以使用以下markdown语法来利用相对路径引用图片资源：<br> <figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">![<span class="string">image-name</span>](<span class="link">image.jpg</span>)</span><br></pre></td></tr></table></figure></p>
+<p>image.jpg的绝对路径为：<code>E:/Bolgs/source/_posts/post_name/image.jpg</code>,但与<code>post_name.md</code>是在同级目录文件中，故可使用上述相对路径进行插入。</p>
+<p>上述引用方法存在一个缺陷：图片只能在文章中显示，但无法在首页中正常显示。<br>如果希望图片在文章和首页中同时显示，可以使用标签插件语法。<br> <figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;% asset_img image.jpg This is an image %&#125;</span><br></pre></td></tr></table></figure></p>
+<p>不过目前个人觉得在文章中显示图片是最重要的，为方便起见，采用相对引用方式足矣。</p>
+<h4 id="CDN引用"><a href="#CDN引用" class="headerlink" title="CDN引用"></a>CDN引用</h4><p>除了在本地存储图片，还可以将图片上传到一些免费的CDN服务中。比如<a href="https://cloudinary.com/" target="_blank" rel="noopener">Cloudinary</a>提供的图片CDN服务，在Cloudinary中上传图片后，会生成对应的url地址，将地址直接拿来引用即可。<br>这种方法博主尚未尝试过，后续有时间将会进行尝试并更新体验。</p>
+<blockquote>
+<p>参考链接: <a href="https://yanyinhong.github.io/2017/05/02/How-to-insert-image-in-hexo-post/" target="_blank" rel="noopener">Hexo博客写作之插入图片</a></p>
+</blockquote>
+<hr>
+<h1 id="踩过的坑"><a href="#踩过的坑" class="headerlink" title="踩过的坑"></a>踩过的坑</h1><h2 id="npm安装出现low-severity-vulnerabilities"><a href="#npm安装出现low-severity-vulnerabilities" class="headerlink" title="npm安装出现low severity vulnerabilities"></a>npm安装出现low severity vulnerabilities</h2><p>由于部分包的版本问题，在安装某些插件时(比如hexo搜索功能插件)，在<code>Git bash</code>中会出现以下错误：</p>
+<blockquote>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ npm install hexo-generator-search --save</span><br><span class="line">+ hexo-generator-search@<span class="number">2</span>.<span class="number">4</span>.<span class="number">0</span></span><br><span class="line">updated <span class="number">1</span> package and audited <span class="number">12499</span> packages <span class="keyword">in</span> <span class="number">14</span>.<span class="number">805</span>s</span><br><span class="line">found <span class="number">5</span> low severity vulnerabilities</span><br><span class="line">  run `npm audit fix` to fix them, or `npm audit` <span class="keyword">for</span> details</span><br></pre></td></tr></table></figure>
+</blockquote>
+<p><em>low severity vulnerabilities</em>直译过来便是<em>低严重漏洞</em>，可以尝试执行<code>npm  audit fix</code>进行修复，但我执行后还是有类似错误。所以查询<a href="https://docs.npmjs.com/auditing-package-dependencies-for-security-vulnerabilities" target="_blank" rel="noopener">官网资料</a>后发现需要手动更新相应的包，输入<code>npm audit</code>可知哪些包需要升级，其中示例如下：<br><img src="https://docs.npmjs.com/assets/images/packages-and-modules/audit-report-vulns-found-manual-review.png" alt="npm audit"><br>根据官网资料中这段话可知包的名称是什么：</p>
+<blockquote>
+<p>For example, if the path to the vulnerability is @package-name &gt; dependent-package &gt; package-with-vulnerability, you will need to update dependent-package.</p>
+</blockquote>
+<p><a href="https://www.npmjs.com.cn/getting-started/updating-global-packages/" target="_blank" rel="noopener">npm更新包</a>的方法为:</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm update -g &lt;pachage&gt;</span><br></pre></td></tr></table></figure>
+
+<p>故此处只需要执行命令<code>npm update -g request</code>即可更新<code>request</code>包。若还有其他需要更新的包，重复上述操作即可。</p>
+<hr>
+<h1 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h1><p>这篇博文更像是自己搭建的记录和参考网站汇总。也是望后来者可以少踩坑。后续将会更新其他类型文章。</p>
+
+      
+    </div>
+
+    
+      
+
+
+    
+
+    
+    
+    
+    <div>
+      
+        <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">--------End--------</div>
+    
+</div>
+      
+    </div>
+
+    
+
+    
+      
+    
+    
+      <div>
+        <div id="reward-container">
+  <div>坚持知识分享,您的支持将鼓励我继续创作!</div>
+  <button id="reward-button" disable="enable" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+
+    
+      
+      
+        
+      
+      <div style="display: inline-block">
+        <img src="/images/wechatpay.png" alt="HsinJhao 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+      
+      
+        
+      
+      <div style="display: inline-block">
+        <img src="/images/alipay.jpg" alt="HsinJhao 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Hexo/" rel="tag"><i class="fa fa-tag"></i> Hexo</a>
+          
+            <a href="/tags/Github/" rel="tag"><i class="fa fa-tag"></i> Github</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/05/16/AnacondaFistExperience/AnacondaFistExperience/" rel="next" title="Anaconda初体验(windows)">
+                <i class="fa fa-chevron-left"></i> Anaconda初体验(windows)
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="gitalk-container">
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">HsinJhao</p>
+              <div class="site-description motion-element" itemprop="description">“与恶龙缠斗过久，自身亦成为恶龙；凝视深渊过久，深渊将回以凝视。”</div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives">
+                
+                    <span class="site-state-item-count">2</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">2</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">4</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#搭建博客基本框架"><span class="nav-number">1.</span> <span class="nav-text">搭建博客基本框架</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#准备工作"><span class="nav-number">1.1.</span> <span class="nav-text">准备工作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#搭建教程"><span class="nav-number">1.2.</span> <span class="nav-text">搭建教程</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#自定义博客内容"><span class="nav-number">2.</span> <span class="nav-text">自定义博客内容</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#博客功能添加"><span class="nav-number">2.1.</span> <span class="nav-text">博客功能添加</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#绑定个人域名"><span class="nav-number">2.1.1.</span> <span class="nav-text">绑定个人域名</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#添加标签"><span class="nav-number">2.1.2.</span> <span class="nav-text">添加标签</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#添加分类"><span class="nav-number">2.1.3.</span> <span class="nav-text">添加分类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#添加目录"><span class="nav-number">2.1.4.</span> <span class="nav-text">添加目录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#添加评论"><span class="nav-number">2.1.5.</span> <span class="nav-text">添加评论</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#添加搜索"><span class="nav-number">2.1.6.</span> <span class="nav-text">添加搜索</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#添加音乐外链播放器"><span class="nav-number">2.1.7.</span> <span class="nav-text">添加音乐外链播放器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#添加字数统计和阅读时长功能"><span class="nav-number">2.1.8.</span> <span class="nav-text">添加字数统计和阅读时长功能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改代码高亮样式"><span class="nav-number">2.1.9.</span> <span class="nav-text">修改代码高亮样式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#博客写作注意事项"><span class="nav-number">2.2.</span> <span class="nav-text">博客写作注意事项</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#插入图片"><span class="nav-number">2.2.1.</span> <span class="nav-text">插入图片</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#本地引用"><span class="nav-number">2.2.1.1.</span> <span class="nav-text">本地引用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#CDN引用"><span class="nav-number">2.2.1.2.</span> <span class="nav-text">CDN引用</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#踩过的坑"><span class="nav-number">3.</span> <span class="nav-text">踩过的坑</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#npm安装出现low-severity-vulnerabilities"><span class="nav-number">3.1.</span> <span class="nav-text">npm安装出现low severity vulnerabilities</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#结语"><span class="nav-number">4.</span> <span class="nav-text">结语</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">HsinJhao</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+    <span title="站点总字数">6k</span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    
+    <span title="站点阅读时长">11 分钟</span>
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.1.1</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.1"></script>
+
+  <script src="/js/motion.js?v=7.1.1"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/affix.js?v=7.1.1"></script>
+
+  <script src="/js/schemes/pisces.js?v=7.1.1"></script>
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.1"></script>
+<script src="/js/post-details.js?v=7.1.1"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.1"></script>
+
+
+  
+
+  
+
+  
+
+  
+  
+    
+
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+
+
+<script src="//cdn.jsdelivr.net/npm/js-md5@0.7.3/src/md5.min.js"></script>
+
+<script>
+  var gitalk = new Gitalk({
+    clientID: '436d1efb3c5f89d6ec5b',
+    clientSecret: 'd4b1a1534d187bc80939f3fe2d0713c58f0a7a97',
+    repo: 'hsinjhao.github.io',
+    owner: 'HsinJhao',
+    admin: ['HsinJhao'],
+    id: md5(location.pathname),
+    
+      language: 'zh-CN',
+    
+    distractionFreeMode: 'true'
+  });
+  gitalk.render('gitalk-container');
+</script>
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
