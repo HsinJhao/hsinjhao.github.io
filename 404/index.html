@@ -41,6 +41,10 @@
 
 
 
+  
+  
+  <link rel="stylesheet" href="/lib/fancybox/source/jquery.fancybox.css">
+
 
 
 
@@ -78,7 +82,7 @@
     sidebar: {"position":"left","display":"always","offset":12,"onmobile":false,"dimmer":false},
     back2top: true,
     back2top_sidebar: true,
-    fancybox: false,
+    fancybox: true,
     fastclick: false,
     lazyload: false,
     tabs: true,
@@ -101,7 +105,7 @@
 
   <meta property="og:type" content="website">
 <meta property="og:title" content="404">
-<meta property="og:url" content="http://yoursite.com/404/index.html">
+<meta property="og:url" content="https://hsinjhao.github.io/404/index.html">
 <meta property="og:site_name" content="HsinJhao&#39;s Blogs">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2019-05-17T05:32:11.168Z">
@@ -114,7 +118,7 @@
 
   
   
-  <link rel="canonical" href="http://yoursite.com/404/">
+  <link rel="canonical" href="https://hsinjhao.github.io/404/">
 
 
 
@@ -497,6 +501,16 @@
           
 
           
+             <div class="cc-license motion-element" itemprop="license">
+              
+              
+                
+              
+              
+              
+              <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+             </div>
+          
 
           
           
@@ -543,7 +557,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="站点总字数">6k</span>
+    <span title="站点总字数">7k</span>
   
 
   
@@ -552,7 +566,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="站点阅读时长">11 分钟</span>
+    <span title="站点阅读时长">12 分钟</span>
   
 </div>
 
@@ -611,6 +625,8 @@
 
 
 
+  
+
 
 
 
@@ -633,6 +649,9 @@
 
   
   <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/fancybox/source/jquery.fancybox.pack.js"></script>
 
 
   
@@ -690,7 +709,7 @@
   var gitalk = new Gitalk({
     clientID: '436d1efb3c5f89d6ec5b',
     clientSecret: 'd4b1a1534d187bc80939f3fe2d0713c58f0a7a97',
-    repo: 'hsinjhao.github.io',
+    repo: 'Blogs-Comment',
     owner: 'HsinJhao',
     admin: ['HsinJhao'],
     id: md5(location.pathname),
@@ -712,6 +731,74 @@
 
 
   
+  
+  <script>
+    
+    function showTime(Counter) {
+      var entries = [];
+      var $visitors = $('.leancloud_visitors');
+
+      $visitors.each(function() {
+        entries.push( $(this).attr('id').trim() );
+      });
+
+      Counter('get', '/classes/Counter', { where: JSON.stringify({ url: { '$in': entries } }) })
+        .done(function({ results }) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.url;
+            var time = item.time;
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for (var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if (countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function ({ responseJSON }) {
+          console.log('LeanCloud Counter Error: ' + responseJSON.code + ' ' + responseJSON.error);
+        });
+    }
+    
+
+    $(function() {
+      $.get('https://app-router.leancloud.cn/2/route?appId=' + 'YjgjJWtQwviNLwXyTsA5LFFJ-gzGzoHsz')
+        .done(function({ api_server }) {
+          var Counter = function(method, url, data) {
+            return $.ajax({
+              method: method,
+              url: 'https://' + api_server + '/1.1' + url,
+              headers: {
+                'X-LC-Id': 'YjgjJWtQwviNLwXyTsA5LFFJ-gzGzoHsz',
+                'X-LC-Key': 'IgYdgpFkJGJemeEtBwsIOCk6',
+                'Content-Type': 'application/json',
+              },
+              data: data
+            });
+          };
+          
+            if ($('.post-title-link').length >= 1) {
+              showTime(Counter);
+            }
+          
+        });
+    });
+  </script>
+
+
 
   
 

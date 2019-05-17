@@ -41,6 +41,10 @@
 
 
 
+  
+  
+  <link rel="stylesheet" href="/lib/fancybox/source/jquery.fancybox.css">
+
 
 
 
@@ -78,7 +82,7 @@
     sidebar: {"position":"left","display":"always","offset":12,"onmobile":false,"dimmer":false},
     back2top: true,
     back2top_sidebar: true,
-    fancybox: false,
+    fancybox: true,
     fastclick: false,
     lazyload: false,
     tabs: true,
@@ -102,7 +106,7 @@
   <meta name="description" content="“与恶龙缠斗过久，自身亦成为恶龙；凝视深渊过久，深渊将回以凝视。”">
 <meta property="og:type" content="website">
 <meta property="og:title" content="HsinJhao&#39;s Blogs">
-<meta property="og:url" content="http://yoursite.com/tags/Deep-Learning/index.html">
+<meta property="og:url" content="https://hsinjhao.github.io/tags/Deep-Learning/index.html">
 <meta property="og:site_name" content="HsinJhao&#39;s Blogs">
 <meta property="og:description" content="“与恶龙缠斗过久，自身亦成为恶龙；凝视深渊过久，深渊将回以凝视。”">
 <meta property="og:locale" content="zh-CN">
@@ -116,7 +120,7 @@
 
   
   
-  <link rel="canonical" href="http://yoursite.com/tags/Deep-Learning/">
+  <link rel="canonical" href="https://hsinjhao.github.io/tags/Deep-Learning/">
 
 
 
@@ -367,7 +371,7 @@
 
       <h2 class="post-title">
         
-          <a class="post-title-link" href="/2019/05/16/AnacondaFistExperience/AnacondaFistExperience/" itemprop="url">
+          <a class="post-title-link" href="/2019/05/16/AnacondaFirstExperience/" itemprop="url">
             
               <span itemprop="name">Anaconda初体验(windows)</span>
             
@@ -495,6 +499,16 @@
           
 
           
+             <div class="cc-license motion-element" itemprop="license">
+              
+              
+                
+              
+              
+              
+              <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+             </div>
+          
 
           
           
@@ -541,7 +555,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="站点总字数">6k</span>
+    <span title="站点总字数">7k</span>
   
 
   
@@ -550,7 +564,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="站点阅读时长">11 分钟</span>
+    <span title="站点阅读时长">12 分钟</span>
   
 </div>
 
@@ -609,6 +623,8 @@
 
 
 
+  
+
 
 
 
@@ -631,6 +647,9 @@
 
   
   <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/fancybox/source/jquery.fancybox.pack.js"></script>
 
 
   
@@ -674,6 +693,74 @@
 
 
   
+  
+  <script>
+    
+    function showTime(Counter) {
+      var entries = [];
+      var $visitors = $('.leancloud_visitors');
+
+      $visitors.each(function() {
+        entries.push( $(this).attr('id').trim() );
+      });
+
+      Counter('get', '/classes/Counter', { where: JSON.stringify({ url: { '$in': entries } }) })
+        .done(function({ results }) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.url;
+            var time = item.time;
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for (var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if (countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function ({ responseJSON }) {
+          console.log('LeanCloud Counter Error: ' + responseJSON.code + ' ' + responseJSON.error);
+        });
+    }
+    
+
+    $(function() {
+      $.get('https://app-router.leancloud.cn/2/route?appId=' + 'YjgjJWtQwviNLwXyTsA5LFFJ-gzGzoHsz')
+        .done(function({ api_server }) {
+          var Counter = function(method, url, data) {
+            return $.ajax({
+              method: method,
+              url: 'https://' + api_server + '/1.1' + url,
+              headers: {
+                'X-LC-Id': 'YjgjJWtQwviNLwXyTsA5LFFJ-gzGzoHsz',
+                'X-LC-Key': 'IgYdgpFkJGJemeEtBwsIOCk6',
+                'Content-Type': 'application/json',
+              },
+              data: data
+            });
+          };
+          
+            if ($('.post-title-link').length >= 1) {
+              showTime(Counter);
+            }
+          
+        });
+    });
+  </script>
+
+
 
   
 
