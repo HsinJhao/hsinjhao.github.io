@@ -111,12 +111,17 @@
 <meta property="og:site_name" content="HsinJhao&#39;s Blogs">
 <meta property="og:description" content="由于个人强迫症，希望将自己值得记录下来的东西通过一种合理的方式进行记录。于是选择了搭建个人博客的方式来实现。通过知乎和面向Google编程后发现利用hexo和github pages来搭建个人博客的方式，最适合我这种穷学生折腾。  搭建博客基本框架准备工作在搭建之间，需要先安装以下应用程序和注册相应账户以满足依赖项：  安装Node.js 安装Git 安装Hexo 注册Github账号  上述步骤">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://hsinjhao.github.io/2019/05/16/BuildBlogsBasedOnHexoAndGithub/linkcolor.png">
+<meta property="og:image" content="https://i.loli.net/2019/05/25/5ce94c492642953620.png">
+<meta property="og:image" content="https://i.loli.net/2019/05/25/5ce94d828d00074670.png">
+<meta property="og:image" content="https://hsinjhao.github.io/2019/05/16/BuildBlogsBasedOnHexoAndGithub/smms.png">
 <meta property="og:image" content="https://docs.npmjs.com/assets/images/packages-and-modules/audit-report-vulns-found-manual-review.png">
-<meta property="og:updated_time" content="2019-05-17T14:44:02.017Z">
+<meta property="og:image" content="https://hsinjhao.github.io/2019/05/16/BuildBlogsBasedOnHexoAndGithub/error_expected-colon-after-dict-key.png">
+<meta property="og:updated_time" content="2019-05-26T06:26:50.989Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="利用hexo和github搭建个人博客的辛酸之路">
 <meta name="twitter:description" content="由于个人强迫症，希望将自己值得记录下来的东西通过一种合理的方式进行记录。于是选择了搭建个人博客的方式来实现。通过知乎和面向Google编程后发现利用hexo和github pages来搭建个人博客的方式，最适合我这种穷学生折腾。  搭建博客基本框架准备工作在搭建之间，需要先安装以下应用程序和注册相应账户以满足依赖项：  安装Node.js 安装Git 安装Hexo 注册Github账号  上述步骤">
-<meta name="twitter:image" content="https://docs.npmjs.com/assets/images/packages-and-modules/audit-report-vulns-found-manual-review.png">
+<meta name="twitter:image" content="https://hsinjhao.github.io/2019/05/16/BuildBlogsBasedOnHexoAndGithub/linkcolor.png">
 
 
 
@@ -139,6 +144,17 @@
 
 
 
+
+  <script async src="//www.googletagmanager.com/gtag/js?id=UA-140805868-1"></script>
+  <script>
+    var host = window.location.hostname;
+    if (host !== "localhost" || !true) {
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-140805868-1');
+    }
+  </script>
 
 
 
@@ -197,6 +213,10 @@
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
+    
+      
+        <p class="site-subtitle">Be a Better Man</p>
+      
     
     
   </div>
@@ -304,11 +324,40 @@
 
       
       
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+        </li>
+      
     </ul>
   
 
   
 
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
   
 </nav>
 
@@ -410,7 +459,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-05-17 22:44:02" itemprop="dateModified" datetime="2019-05-17T22:44:02+08:00">2019-05-17</time>
+                <time title="修改时间：2019-05-26 14:26:50" itemprop="dateModified" datetime="2019-05-26T14:26:50+08:00">2019-05-26</time>
               
             
           </span>
@@ -467,7 +516,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">3.8k</span>
+                <span title="本文字数">6.8k</span>
               
 
               
@@ -481,7 +530,7 @@
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">7 分钟</span>
+                <span title="阅读时长">12 分钟</span>
               
             </div>
           
@@ -519,19 +568,20 @@
 </ul>
 <hr>
 <h1 id="自定义博客内容"><a href="#自定义博客内容" class="headerlink" title="自定义博客内容"></a>自定义博客内容</h1><h2 id="博客功能添加"><a href="#博客功能添加" class="headerlink" title="博客功能添加"></a>博客功能添加</h2><p>在搭建完博客的基本框架后，可以对以下内容进行自定义：</p>
-<h3 id="绑定个人域名"><a href="#绑定个人域名" class="headerlink" title="绑定个人域名"></a>绑定个人域名</h3><h3 id="添加标签"><a href="#添加标签" class="headerlink" title="添加标签"></a>添加标签</h3><h3 id="添加分类"><a href="#添加分类" class="headerlink" title="添加分类"></a>添加分类</h3><h3 id="添加目录"><a href="#添加目录" class="headerlink" title="添加目录"></a>添加目录</h3><h3 id="添加文章阅读次数"><a href="#添加文章阅读次数" class="headerlink" title="添加文章阅读次数"></a>添加文章阅读次数</h3><p>基于LeanCloud进行设置，参考<a href="https://hexo-guide.readthedocs.io/zh_CN/latest/third-service/[LeanCloud]%E6%96%87%E7%AB%A0%E9%98%85%E8%AF%BB%E6%AC%A1%E6%95%B0.html" target="_blank" rel="noopener">官方链接</a>。</p>
-<h3 id="添加评论"><a href="#添加评论" class="headerlink" title="添加评论"></a>添加评论</h3><p>由于个人比较喜欢github的评论系统风格，又查阅相应参考链接，<code>gitalk</code>是可以避免被墙、速度较快的评论系统。故添加第三方服务<code>gitalk</code>来实现评论系统。其主要的配置过程可参考<a href="https://hexo-guide.readthedocs.io/zh_CN/latest/third-service/[Gitalk]%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F.html" target="_blank" rel="noopener">Next官方链接</a>。
-其中个人遭遇了<strong>未找到相关的 Issues 进行评论，请联系@XXXXX初始化创建</strong>的问题，通过官方issue找到了原因，是因为没有对评论系统进行初始化。当然可能还存在其他问题，在此给出<a href="https://github.com/mzlogin/mzlogin.github.io/issues/63" target="_blank" rel="noopener">官方issue链接</a>,如遇到相应问题，可首先查看此链接排除。</p>
-<h3 id="添加搜索"><a href="#添加搜索" class="headerlink" title="添加搜索"></a>添加搜索</h3><h3 id="添加音乐外链播放器"><a href="#添加音乐外链播放器" class="headerlink" title="添加音乐外链播放器"></a>添加音乐外链播放器</h3><h3 id="添加字数统计和阅读时长功能"><a href="#添加字数统计和阅读时长功能" class="headerlink" title="添加字数统计和阅读时长功能"></a>添加字数统计和阅读时长功能</h3><p>Hexo的Next主题中默认是通过插件<code>hexo-symbols-count-time</code>实现的，通过git bash定位到博客根目录(如<code>E:\Blogs</code>)下后根据以下命令安装上述插件：</p>
-<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-symbols-count-<span class="built_in">time</span></span><br></pre></td></tr></table></figure>
-
+<h3 id="添加标签、分类、目录"><a href="#添加标签、分类、目录" class="headerlink" title="添加标签、分类、目录"></a>添加标签、分类、目录</h3><p>参考<a href="https://hexo-guide.readthedocs.io/zh_CN/latest/advanced.html" target="_blank" rel="noopener">官方链接</a>。</p>
+<h3 id="添加文章阅读次数"><a href="#添加文章阅读次数" class="headerlink" title="添加文章阅读次数"></a>添加文章阅读次数</h3><p>基于LeanCloud进行设置，参考<a href="https://hexo-guide.readthedocs.io/zh_CN/latest/third-service/[LeanCloud]%E6%96%87%E7%AB%A0%E9%98%85%E8%AF%BB%E6%AC%A1%E6%95%B0.html" target="_blank" rel="noopener">官方链接</a>。</p>
+<h3 id="添加评论"><a href="#添加评论" class="headerlink" title="添加评论"></a>添加评论</h3><p>由于个人比较喜欢github的评论系统风格，又查阅相应参考链接，<code>gitalk</code>是可以避免被墙、速度较快的评论系统。故添加第三方服务<code>gitalk</code>来实现评论系统。其主要的配置过程可参考<a href="https://hexo-guide.readthedocs.io/zh_CN/latest/third-service/[Gitalk]%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F.html" target="_blank" rel="noopener">Next官方链接</a>。<br>其中个人遭遇了<strong>未找到相关的 Issues 进行评论，请联系@XXXXX初始化创建</strong>的问题，通过官方issue找到了原因，是因为没有对评论系统进行初始化。当然可能还存在其他问题，在此给出<a href="https://github.com/mzlogin/mzlogin.github.io/issues/63" target="_blank" rel="noopener">官方issue链接</a>,如遇到相应问题，可首先查看此链接排除。</p>
+<h3 id="添加搜索、音乐外链播放器"><a href="#添加搜索、音乐外链播放器" class="headerlink" title="添加搜索、音乐外链播放器"></a>添加搜索、音乐外链播放器</h3><p>尚未进行，后续有空填坑。</p>
+<h3 id="修改文章链接文本样式"><a href="#修改文章链接文本样式" class="headerlink" title="修改文章链接文本样式"></a>修改文章链接文本样式</h3><p>修改文件 <code>themes\next\source\css\_common\components\post\post.styl</code>，在末尾添加如下css样式：</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">// 文章内链接文本样式</span><br><span class="line">.post-body p a&#123;</span><br><span class="line"><span class="function">  color: #0593<span class="title">d3</span>;</span></span><br><span class="line"><span class="function">  <span class="title">border</span>-<span class="title">bottom</span>: <span class="title">none</span>;</span></span><br><span class="line"><span class="function">  <span class="title">border</span>-<span class="title">bottom</span>: 1<span class="title">px</span> <span class="title">solid</span> #0593<span class="title">d3</span>;</span></span><br><span class="line"><span class="function">  &amp;:<span class="title">hover</span> &#123;</span></span><br><span class="line"><span class="function">    <span class="title">color</span>: #05<span class="title">ac50</span>;</span></span><br><span class="line"><span class="function">    <span class="title">border</span>-<span class="title">bottom</span>: <span class="title">none</span>;</span></span><br><span class="line"><span class="function">    <span class="title">border</span>-<span class="title">bottom</span>: 1<span class="title">px</span> <span class="title">solid</span> #<span class="title">fc6423</span>;</span></span><br><span class="line"><span class="function">  &#125;</span></span><br><span class="line"><span class="function">&#125;</span></span><br></pre></td></tr></table></figure>
+<p>其中相应的颜色可以自己定义，利用vscode还可以直观看到相应的颜色显示效果<br><img src="linkcolor.png" alt="文章链接文本颜色显示"></p>
+<h3 id="添加字数统计和阅读时长功能"><a href="#添加字数统计和阅读时长功能" class="headerlink" title="添加字数统计和阅读时长功能"></a>添加字数统计和阅读时长功能</h3><p>从Hexo的Next主题6.0.0版本开始，其默认通过插件<code>hexo-symbols-count-time</code>来实现字数统计，通过git bash定位到博客根目录(如<code>E:\Blogs</code>)下后根据以下命令安装上述插件：<br><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-symbols-count-<span class="built_in">time</span></span><br></pre></td></tr></table></figure></p>
 <blockquote>
-<p>注：有教程是安装<code>hexo-wordcount</code>来实现字数统计功能，但是需要修改太多东西，较为繁琐，故个人建议实验Next主题默认的<code>hexo-symbols-count-time</code>插件来实现上述功能。如需利用<code>hexo-wordcount</code>来实现，可参考<a href="https://eason-yang.com/2016/11/05/add-word-count-to-hexo-next/" target="_blank" rel="noopener">此链接</a>。</p>
+<p>注：有教程是安装<code>hexo-wordcount</code>来实现字数统计功能，但是需要修改太多东西，较为繁琐，最好和官方一致，并且只需要简单配置即可。故个人建议使用Next主题默认的<code>hexo-symbols-count-time</code>插件来实现上述功能。如需利用<code>hexo-wordcount</code>来实现，可参考<a href="https://eason-yang.com/2016/11/05/add-word-count-to-hexo-next/" target="_blank" rel="noopener">此链接</a>。</p>
 </blockquote>
 <p>然后需要修改主题配置文件和站点配置文件：</p>
 <ul>
 <li>修改站点配置文件<code>hexo _config.yml</code>：<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">symbols_count_time:</span></span><br><span class="line"><span class="function"><span class="title">symbols</span>: <span class="title">true</span> # 文章字数</span></span><br><span class="line"><span class="function"><span class="title">time</span>: <span class="title">true</span> # 阅读时长</span></span><br><span class="line"><span class="function"><span class="title">total_symbols</span>: <span class="title">true</span> # 所有文章总字数</span></span><br><span class="line"><span class="function"><span class="title">total_time</span>: <span class="title">true</span> # 所有文章阅读中时长</span></span><br></pre></td></tr></table></figure>
-
 </li>
 </ul>
 <blockquote>
@@ -539,33 +589,37 @@
 </blockquote>
 <ul>
 <li>修改主题配置文件<code>next _config.yml</code>:<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">symbols_count_time:</span></span><br><span class="line"><span class="function"><span class="title">separated_meta</span>: <span class="title">true</span>  # 是否换行显示 字数统计 及 阅读时长</span></span><br><span class="line"><span class="function"><span class="title">item_text_post</span>: <span class="title">true</span>  # 文章 字数统计 阅读时长 使用图标 还是 文本表示</span></span><br><span class="line"><span class="function"><span class="title">item_text_total</span>: <span class="title">false</span> # 博客底部统计 字数统计 阅读时长 使用图标 还是 文本表示</span></span><br><span class="line"><span class="function"><span class="title">awl</span>: 4</span></span><br><span class="line"><span class="function"><span class="title">wpm</span>: 275</span></span><br></pre></td></tr></table></figure>
-
 </li>
 </ul>
 <p>具体字段含义可查看<a href="https://github.com/theme-next/hexo-symbols-count-time" target="_blank" rel="noopener">官方链接</a>.</p>
-<h3 id="修改代码高亮样式"><a href="#修改代码高亮样式" class="headerlink" title="修改代码高亮样式"></a>修改代码高亮样式</h3><p>在Next主题下，修改代码高亮样式通过修改主题配置文件<code>themes/next/_config.yml</code>中找到以下代码段修改<code>highlight_theme</code>字段实现：</p>
-<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># Code Highlight theme</span><br><span class="line"># Available values: normal | night | night eighties | night blue | night bright #格式样式，具体显示效果可查看以下链接</span><br><span class="line"># https://github.com/chriskempson/tomorrow-theme</span><br><span class="line"><span class="function">highlight_theme: <span class="title">normal</span> #可修改为<span class="title">night</span>模式</span></span><br></pre></td></tr></table></figure>
-
-<p>相应的参考博客链接如下：</p>
+<h3 id="修改标签样式"><a href="#修改标签样式" class="headerlink" title="修改标签样式"></a>修改标签样式</h3><p>NexT主题下，默认的标签样式是这样的：</p>
+<p><img src="https://i.loli.net/2019/05/25/5ce94c492642953620.png" alt="NexT默认标签样式"></p>
+<p>我们可以通过修改<code>themes/next/layout/_macro/post.swig</code>文件中的以下片段实现标签样式的修改：<br><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;footer class="post-footer"&gt;</span><br><span class="line">  &#123;% <span class="keyword">if</span> post.tags and post.tags.length and <span class="keyword">not</span> is_index %&#125;</span><br><span class="line">    &lt;div class="post-tags"&gt;</span><br><span class="line">      &#123;% <span class="keyword">for</span> tag <span class="keyword">in</span> post.tags %&#125;</span><br><span class="line">        &lt;a href="&#123;&#123; url_for(tag.<span class="built_in">path</span>) &#125;&#125;" # &#123;&#123; tag.name &#125;&#125;&lt;/a&gt;</span><br><span class="line">      &#123;% endfor %&#125;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">  &#123;% endif %&#125;</span><br></pre></td></tr></table></figure></p>
+<p>只需要将其中的<code>#</code>修改为<code>&lt;i class=&quot;fa fa-tag&quot;&gt;&lt;/i&gt;</code>即可实现以下标签样式：</p>
+<p><img src="https://i.loli.net/2019/05/25/5ce94d828d00074670.png" alt="修改后的标签样式"></p>
+<h3 id="修改代码高亮样式"><a href="#修改代码高亮样式" class="headerlink" title="修改代码高亮样式"></a>修改代码高亮样式</h3><p>在Next主题下，修改代码高亮样式通过修改主题配置文件<code>themes/next/_config.yml</code>中找到以下代码段修改<code>highlight_theme</code>字段实现：<br><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># Code Highlight theme</span><br><span class="line"># Available values: normal | night | night eighties | night blue | night bright </span><br><span class="line"># https://github.com/chriskempson/tomorrow-theme</span><br><span class="line"><span class="function">highlight_theme: <span class="title">normal</span> #可修改为<span class="title">night</span>模式</span></span><br></pre></td></tr></table></figure></p>
+<p>各种主题的显示效果可查看<a href="https://github.com/chriskempson/tomorrow-theme" target="_blank" rel="noopener">此链接</a></p>
+<h3 id="公式支持"><a href="#公式支持" class="headerlink" title="公式支持"></a>公式支持</h3><p>此处主要参考<a href="https://hexo-guide.readthedocs.io/zh_CN/latest/theme/[NexT]%E9%85%8D%E7%BD%AEMathJax.html" target="_blank" rel="noopener">NexT官方链接</a>对<code>MathJax</code>进行配置，主要分为以下两步：</p>
+<h4 id="打开NexT内部数学公式渲染引擎"><a href="#打开NexT内部数学公式渲染引擎" class="headerlink" title="打开NexT内部数学公式渲染引擎"></a>打开NexT内部数学公式渲染引擎</h4><p>找到主题配置文件<code>_config.yml</code>中的<code>MathJax Support</code>字段，将其中的enable设为<code>true</code>，便打开了MathJax渲染引擎。<br>若想使用其他数学公式渲染引擎也可以，参照官方链接进行。此处不再赘述。</p>
+<h4 id="打开hexo渲染器"><a href="#打开hexo渲染器" class="headerlink" title="打开hexo渲染器"></a>打开hexo渲染器</h4><p>进入博客所在根目录，利用cmd安装以下功能插件：<br><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm un hexo-renderer-marked --save # 卸载hexo-renderer-marked</span><br><span class="line">npm i hexo-renderer-pandoc --save # 或者 hexo-renderer-kramed</span><br></pre></td></tr></table></figure></p>
+<p>然后启动服务器：<br><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo clean &amp;&amp; hexo server</span><br></pre></td></tr></table></figure></p>
+<p>进行公式测试。如果出现错误，可查看<a href="https://hexo-guide.readthedocs.io/zh_CN/latest/theme/[NexT]%E9%85%8D%E7%BD%AEMathJax.html" target="_blank" rel="noopener">官方链接</a>进行解决。</p>
+<p>还可以参考<a href="http://layty.coding.me/2018/09/21/hexo/hexo-Next%E4%B8%BB%E9%A2%98%E4%B8%AD%E6%94%AF%E6%8C%81latex%E5%85%AC%E5%BC%8F/" target="_blank" rel="noopener">此链接</a>配置数学公式支持功能。</p>
+<h4 id="修改公式显示比例"><a href="#修改公式显示比例" class="headerlink" title="修改公式显示比例"></a>修改公式显示比例</h4><p>由于部分公式较为复杂，可能同一公式里会出现字母重叠情况，此时可以对<code>next\layout\_third-party\math\mathjax.swig</code>中的<code>MathJax.Hub.Config</code>内容进行修改，可以实现显示比例的缩放：<br><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">MathJax.Hub.Config(&#123;</span><br><span class="line"><span class="code">        extensions: ["tex2jax.js"],</span></span><br><span class="line"><span class="code">        jax: ["input/TeX", "output/HTML-CSS"],</span></span><br><span class="line"><span class="code">        tex2jax: &#123;</span></span><br><span class="line"><span class="code">          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],</span></span><br><span class="line"><span class="code">          displayMath: [ ['$$','$$'], ["\\[","\\]"] ], </span></span><br><span class="line"><span class="code">          processEscapes: true,</span></span><br><span class="line"><span class="code">          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']</span></span><br><span class="line"><span class="code">        &#125;,</span></span><br><span class="line"><span class="code">        "HTML-CSS": &#123; </span></span><br><span class="line"><span class="code">          availableFonts: ["TeX","STIX"],</span></span><br><span class="line"><span class="code">          scale: 110,</span></span><br><span class="line"><span class="code">          showMathMenu: false </span></span><br><span class="line"><span class="code">         &#125;</span></span><br><span class="line"><span class="code">      &#125;);</span></span><br></pre></td></tr></table></figure></p>
+<p>其中<code>HTML-CSS</code>下的<code>scale</code>字段便是缩放比例,此处个人设置为<code>110%</code>。有关MathJax详细的配置方法请见<a href="http://docs.mathjax.org/en/latest/config-files.html" target="_blank" rel="noopener">官方链接</a>。</p>
+<h3 id="博客功能配置和美化参考链接"><a href="#博客功能配置和美化参考链接" class="headerlink" title="博客功能配置和美化参考链接"></a>博客功能配置和美化参考链接</h3><p>相应的参考博客链接如下：</p>
 <ul>
-<li><p><a href="https://vslam.net/2018/03/04/Hexo%E4%BD%BF%E7%94%A8%E6%94%BB%E7%95%A5-%E6%B7%BB%E5%8A%A0%E5%88%86%E7%B1%BB%E5%8F%8A%E6%A0%87%E7%AD%BE/" target="_blank" rel="noopener"><strong>Hexo使用攻略-添加分类标签和搜索功能</strong></a></p>
-</li>
-<li><p><a href="https://www.jianshu.com/p/e17711e44e00" target="_blank" rel="noopener"><strong>Hexo使用攻略-添加分类及标签</strong></a></p>
-</li>
-<li><p><a href="https://hexo.io/zh-cn/docs/" target="_blank" rel="noopener">Hexo官方网站</a></p>
-</li>
-<li><p><a href="https://blog.csdn.net/wugenqiang/article/details/88609066" target="_blank" rel="noopener"><strong>Hexo的Next主题开启文章目录和调整样式</strong></a>:Next主题下和默认主题添加文章目录的方式不太一样。</p>
-</li>
-<li><p><a href="http://charmlegal.com/2017/12/05/article6/" target="_blank" rel="noopener">Hexo—如何设置文章目录(TOC)</a></p>
-</li>
-<li><p><a href="http://kuangqi.me/tricks/enable-table-of-contents-on-hexo/#%E4%BF%AE%E6%94%B9Landscape%E4%B8%BB%E9%A2%98%E7%9A%84ejs%E6%96%87%E4%BB%B6" target="_blank" rel="noopener">为Hexo博客默认主题添加目录</a></p>
-</li>
-<li><p><a href="https://shjhe.github.io/hexo/2018/07/04/Hexo%20Next%E4%B8%BB%E9%A2%98%E5%BC%80%E5%90%AF%E5%AD%97%E6%95%B0%E7%BB%9F%E8%AE%A1%E5%8F%8A%E9%98%85%E8%AF%BB%E6%97%B6%E9%95%BF/" target="_blank" rel="noopener"><strong>Hexo Next主题开启字数统计及阅读时长</strong></a></p>
-</li>
-<li><p><a href="https://zhaliezhi.com/posts/1e17d9f3.html" target="_blank" rel="noopener">Hexo + Next 折腾小记</a>：有关于字体、图片边框、社交链接居中显示、文章目录隐藏、代码高亮样式修改等。</p>
-</li>
-<li><p><a href="https://yashuning.github.io/2018/06/29/hexo-Next-%E4%B8%BB%E9%A2%98%E6%B7%BB%E5%8A%A0%E8%AF%84%E8%AE%BA%E5%8A%9F%E8%83%BD/" target="_blank" rel="noopener">hexo - Next 主题添加评论功能</a>：使用Valine评论系统</p>
-</li>
+<li><a href="http://yearito.cn/posts/hexo-theme-beautify.html" target="_blank" rel="noopener"><strong>Hexo 搭建个人博客系列：主题美化篇</strong></a>：2018.11.20更新，有关动态背景、看板娘、页面加载进度条、鼠标点击效果等。</li>
+<li><a href="https://www.jianshu.com/p/f054333ac9e6" target="_blank" rel="noopener"><strong>Hexo的NexT主题个性化教程：打造炫酷网站</strong></a></li>
+<li><a href="https://vslam.net/2018/03/04/Hexo%E4%BD%BF%E7%94%A8%E6%94%BB%E7%95%A5-%E6%B7%BB%E5%8A%A0%E5%88%86%E7%B1%BB%E5%8F%8A%E6%A0%87%E7%AD%BE/" target="_blank" rel="noopener"><strong>Hexo使用攻略-添加分类标签和搜索功能</strong></a></li>
+<li><a href="https://www.jianshu.com/p/e17711e44e00" target="_blank" rel="noopener"><strong>Hexo使用攻略-添加分类及标签</strong></a></li>
+<li><a href="https://blog.csdn.net/wugenqiang/article/details/88609066" target="_blank" rel="noopener"><strong>Hexo的Next主题开启文章目录和调整样式</strong></a>:Next主题下和默认主题添加文章目录的方式不太一样。</li>
+<li><a href="https://hexo.io/zh-cn/docs/" target="_blank" rel="noopener"><strong>Hexo官方网站</strong></a></li>
+<li><a href="http://charmlegal.com/2017/12/05/article6/" target="_blank" rel="noopener">Hexo—如何设置文章目录(TOC)</a></li>
+<li><a href="https://shjhe.github.io/hexo/2018/07/04/Hexo%20Next%E4%B8%BB%E9%A2%98%E5%BC%80%E5%90%AF%E5%AD%97%E6%95%B0%E7%BB%9F%E8%AE%A1%E5%8F%8A%E9%98%85%E8%AF%BB%E6%97%B6%E9%95%BF/" target="_blank" rel="noopener"><strong>Hexo Next主题开启字数统计及阅读时长</strong></a></li>
+<li><a href="https://zhaliezhi.com/posts/1e17d9f3.html" target="_blank" rel="noopener">Hexo + Next 折腾小记</a>：有关于字体、图片边框、社交链接居中显示、文章目录隐藏、代码高亮样式修改等。</li>
+<li><a href="https://yashuning.github.io/2018/06/29/hexo-Next-%E4%B8%BB%E9%A2%98%E6%B7%BB%E5%8A%A0%E8%AF%84%E8%AE%BA%E5%8A%9F%E8%83%BD/" target="_blank" rel="noopener">hexo - Next 主题添加评论功能</a>：使用Valine评论系统</li>
+<li><a href="http://kuangqi.me/tricks/enable-table-of-contents-on-hexo/#%E4%BF%AE%E6%94%B9Landscape%E4%B8%BB%E9%A2%98%E7%9A%84ejs%E6%96%87%E4%BB%B6" target="_blank" rel="noopener">为Hexo博客默认主题添加目录</a></li>
 </ul>
 <h2 id="博客写作注意事项"><a href="#博客写作注意事项" class="headerlink" title="博客写作注意事项"></a>博客写作注意事项</h2><h3 id="插入图片"><a href="#插入图片" class="headerlink" title="插入图片"></a>插入图片</h3><p>在Hexo博客中插入图片有两种方式：</p>
 <h4 id="本地引用"><a href="#本地引用" class="headerlink" title="本地引用"></a>本地引用</h4><ul>
@@ -574,17 +628,17 @@
 </li>
 <li><p>相对路径:<br>图片也可以采用相对路径，即在文章所属的文件夹中，从而使用相对路径来访问。文章的目录通过配置<code>_config.yml</code>来进行生成。</p>
 <figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">post_asset_folder: <span class="title">true</span></span></span><br></pre></td></tr></table></figure>
-
 </li>
 </ul>
-<p>将<code>_config.yml</code>文件中的配置项<code>post_asset_folder</code>设为<code>true</code>后，执行命令:</p>
-<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new post_name</span><br></pre></td></tr></table></figure>
-
+<p>将<code>_config.yml</code>文件中的配置项<code>post_asset_folder</code>设为<code>true</code>后，执行命令:<br><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new post_name</span><br></pre></td></tr></table></figure></p>
 <p> 在<code>source/_posts</code>中会生成文章<code>post_name.md</code>和同名文件夹<code>post_name</code>。将图片资源放在post_name中，文章就可以使用以下markdown语法来利用相对路径引用图片资源：<br> <figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">![<span class="string">image-name</span>](<span class="link">image.jpg</span>)</span><br></pre></td></tr></table></figure></p>
 <p>image.jpg的绝对路径为：<code>E:/Bolgs/source/_posts/post_name/image.jpg</code>,但与<code>post_name.md</code>是在同级目录文件中，故可使用上述相对路径进行插入。</p>
-<p>上述引用方法存在一个缺陷：图片只能在文章中显示，但无法在首页中正常显示。<br>如果希望图片在文章和首页中同时显示，可以使用标签插件语法。<br> <figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;% asset_img image.jpg This is an image %&#125;</span><br></pre></td></tr></table></figure></p>
+<p>上述引用方法存在一个缺陷：图片只能在文章中显示，但无法在首页中正常显示。<br>如果希望图片在文章和首页中同时显示，可以使用标签插件语法。<br> <figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123; % asset_img image.jpg This is an image % &#125;</span><br></pre></td></tr></table></figure></p>
 <p>不过目前个人觉得在文章中显示图片是最重要的，为方便起见，采用相对引用方式足矣。</p>
-<h4 id="CDN引用"><a href="#CDN引用" class="headerlink" title="CDN引用"></a>CDN引用</h4><p>除了在本地存储图片，还可以将图片上传到一些免费的CDN服务中。比如<a href="https://cloudinary.com/" target="_blank" rel="noopener">Cloudinary</a>提供的图片CDN服务，在Cloudinary中上传图片后，会生成对应的url地址，将地址直接拿来引用即可。<br>这种方法博主尚未尝试过，后续有时间将会进行尝试并更新体验。</p>
+<h4 id="CDN引用"><a href="#CDN引用" class="headerlink" title="CDN引用"></a>CDN引用</h4><p>除了在本地存储图片，还可以将图片上传到一些免费的CDN服务中。比如<a href="https://cloudinary.com/" target="_blank" rel="noopener">Cloudinary</a>提供的图片CDN服务，在Cloudinary中上传图片后，会生成对应的url地址，将地址直接拿来引用即可。</p>
+<p>若是无关紧要的图片，也可以使用一些免费图床来生成url地址，直接进行引用。比如<a href="https://sm.ms/" target="_blank" rel="noopener">免费图床sm</a>,只需要选择本地图片upload至该界面，即可生成链接，如下图：</p>
+<p><img src="smms.png" alt="sm.ms免费图床"></p>
+<p>其中第三步所得到的便是url链接。</p>
 <blockquote>
 <p>参考链接: <a href="https://yanyinhong.github.io/2017/05/02/How-to-insert-image-in-hexo-post/" target="_blank" rel="noopener">Hexo博客写作之插入图片</a></p>
 </blockquote>
@@ -597,12 +651,19 @@
 <blockquote>
 <p>For example, if the path to the vulnerability is @package-name &gt; dependent-package &gt; package-with-vulnerability, you will need to update dependent-package.</p>
 </blockquote>
-<p><a href="https://www.npmjs.com.cn/getting-started/updating-global-packages/" target="_blank" rel="noopener">npm更新包</a>的方法为:</p>
-<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm update -g &lt;pachage&gt;</span><br></pre></td></tr></table></figure>
-
+<p><a href="https://www.npmjs.com.cn/getting-started/updating-global-packages/" target="_blank" rel="noopener">npm更新包</a>的方法为:<br><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm update -g &lt;pachage&gt;</span><br></pre></td></tr></table></figure></p>
 <p>故此处只需要执行命令<code>npm update -g request</code>即可更新<code>request</code>包。若还有其他需要更新的包，重复上述操作即可。</p>
+<h2 id="hexo-g中出现template-render-error"><a href="#hexo-g中出现template-render-error" class="headerlink" title="hexo g中出现template render error"></a><code>hexo g</code>中出现<code>template render error</code></h2><p>自己在写博客的过程中，遇到了上述问题。经<a href="https://github.com/hexojs/hexo/issues/1605" target="_blank" rel="noopener">github相关问题</a>得知，该错误出现的原因是：md文件中所插入的公式里包含两个花括号<code>{{}}</code>，而jekyll和hexo都会解析这个样式，从而导致出错。以下是个人在执行<code>hexo g</code>时所出现的错误截图：</p>
+<p><img src="error_expected-colon-after-dict-key.png" alt="`hexo g`出错截图"></p>
+<h3 id="官方解决方法"><a href="#官方解决方法" class="headerlink" title="官方解决方法"></a>官方解决方法</h3><p>官方所给出的<a href="https://hexo.io/docs/tag-plugins.html#Raw" target="_blank" rel="noopener">解决方式</a>是:</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;% raw %&#125;</span><br><span class="line">content</span><br><span class="line">&#123;% endraw %&#125;</span><br></pre></td></tr></table></figure>
+<p>即在公式前后插入相应的模块：<br><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;% raw %&#125;</span><br><span class="line">$$&#123;X<span class="emphasis">_k&#125; = \&#123;&#123;x_</span>1&#125;,&#123;x<span class="emphasis">_2&#125;,...,&#123;x_</span>n&#125;\&#125; $$ //代码段</span><br><span class="line">&#123;% endraw %&#125;</span><br></pre></td></tr></table></figure></p>
+<p>但一篇博客动辄公式十几个，自己添加起来费神费力，虽然有人写了<a href="https://mlnote.com/2016/09/03/solved-mathjex-problem/" target="_blank" rel="noopener">python脚本</a>,但经过测试后，并不能自动添加<code>raw tag</code>，希望在后期的hexo中可以解决上述问题。</p>
+<h3 id="权益之计"><a href="#权益之计" class="headerlink" title="权益之计"></a>权益之计</h3><p>由于个人在hexo和Jekyll这两个框架中来回倒腾，发现这两个框架分别是使用的<code>nunjunks</code>和<code>liquid</code>这两个模板引擎，二者均对markdown中的<code>{{、}}、{%、%}、{#、#}</code>字符进行动态解析(非专业人士，可能表达有误)，然而我们并不希望发生这样的事。</p>
+<p>一个权宜之计是，将上述字符中添加空格，至少这种方式在公式中是可以正常解析的，并且也避免了模板引擎<code>nunjunks</code>或者<code>liquid</code>对上述字符进行动态解析。个人目前采用的是此种方法。因为可以使用<code>vs code</code>等任一一款文本编辑器快速查询和替换嘛。</p>
+<p>若使用的hexo框架，另外一个方法是修改nunjunks中的模板标签，这个是偶然在一个<a href="http://xcoding.tech/2018/08/08/hexo/%E5%A6%82%E4%BD%95%E4%BB%8E%E6%A0%B9%E6%9C%AC%E8%A7%A3%E5%86%B3hexo%E4%B8%8D%E5%85%BC%E5%AE%B9%7B%7B%7D%7D%E6%A0%87%E7%AD%BE%E9%97%AE%E9%A2%98/" target="_blank" rel="noopener">博客</a>中看见的解决方法。通过直接修改nunjucks模板的源代码来避免上述冲突，还需要修改依赖于nunjunks的其他插件，比如<code>hexo-generator-search</code>这个插件，通常是用于搜索，比如本站的搜索功能。具体情况和修改方式可点击<a href="http://xcoding.tech/2018/08/08/hexo/%E5%A6%82%E4%BD%95%E4%BB%8E%E6%A0%B9%E6%9C%AC%E8%A7%A3%E5%86%B3hexo%E4%B8%8D%E5%85%BC%E5%AE%B9%7B%7B%7D%7D%E6%A0%87%E7%AD%BE%E9%97%AE%E9%A2%98/" target="_blank" rel="noopener">博文链接</a>进行查看,此处不再赘述。</p>
 <hr>
-<h1 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h1><p>这篇博文更像是自己搭建的记录和参考网站汇总。也是望后来者可以少踩坑。后续将会更新其他类型文章。</p>
+<h1 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h1><p>这篇博文是自己搭建的记录和参考网站汇总。也是望后来者可以少踩坑。后续将会更新其他类型文章。</p>
 
       
     </div>
@@ -620,7 +681,7 @@
       
         <div>
     
-        <div style="text-align:center;color: #ccc;font-size:14px;">--------End--------</div>
+        <div style="text-align:center;color: #ccc;font-size:14px;"> ---------   End. Thanks for Reading!   ---------</div>
     
 </div>
       
@@ -721,6 +782,10 @@
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/2019/05/22/EvaluationCriterionOfImageSegmentation/" rel="prev" title="图像分割领域中的评价标准">
+                图像分割领域中的评价标准 <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -792,7 +857,7 @@
                 
                   <a href="/archives">
                 
-                    <span class="site-state-item-count">2</span>
+                    <span class="site-state-item-count">4</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -813,7 +878,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">2</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">4</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -838,7 +907,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">4</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">6</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -886,7 +959,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#搭建博客基本框架"><span class="nav-number">1.</span> <span class="nav-text">搭建博客基本框架</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#准备工作"><span class="nav-number">1.1.</span> <span class="nav-text">准备工作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#搭建教程"><span class="nav-number">1.2.</span> <span class="nav-text">搭建教程</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#自定义博客内容"><span class="nav-number">2.</span> <span class="nav-text">自定义博客内容</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#博客功能添加"><span class="nav-number">2.1.</span> <span class="nav-text">博客功能添加</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#绑定个人域名"><span class="nav-number">2.1.1.</span> <span class="nav-text">绑定个人域名</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#添加标签"><span class="nav-number">2.1.2.</span> <span class="nav-text">添加标签</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#添加分类"><span class="nav-number">2.1.3.</span> <span class="nav-text">添加分类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#添加目录"><span class="nav-number">2.1.4.</span> <span class="nav-text">添加目录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#添加文章阅读次数"><span class="nav-number">2.1.5.</span> <span class="nav-text">添加文章阅读次数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#添加评论"><span class="nav-number">2.1.6.</span> <span class="nav-text">添加评论</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#添加搜索"><span class="nav-number">2.1.7.</span> <span class="nav-text">添加搜索</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#添加音乐外链播放器"><span class="nav-number">2.1.8.</span> <span class="nav-text">添加音乐外链播放器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#添加字数统计和阅读时长功能"><span class="nav-number">2.1.9.</span> <span class="nav-text">添加字数统计和阅读时长功能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改代码高亮样式"><span class="nav-number">2.1.10.</span> <span class="nav-text">修改代码高亮样式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#博客写作注意事项"><span class="nav-number">2.2.</span> <span class="nav-text">博客写作注意事项</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#插入图片"><span class="nav-number">2.2.1.</span> <span class="nav-text">插入图片</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#本地引用"><span class="nav-number">2.2.1.1.</span> <span class="nav-text">本地引用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#CDN引用"><span class="nav-number">2.2.1.2.</span> <span class="nav-text">CDN引用</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#踩过的坑"><span class="nav-number">3.</span> <span class="nav-text">踩过的坑</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#npm安装出现low-severity-vulnerabilities"><span class="nav-number">3.1.</span> <span class="nav-text">npm安装出现low severity vulnerabilities</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#结语"><span class="nav-number">4.</span> <span class="nav-text">结语</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#搭建博客基本框架"><span class="nav-number">1.</span> <span class="nav-text">搭建博客基本框架</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#准备工作"><span class="nav-number">1.1.</span> <span class="nav-text">准备工作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#搭建教程"><span class="nav-number">1.2.</span> <span class="nav-text">搭建教程</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#自定义博客内容"><span class="nav-number">2.</span> <span class="nav-text">自定义博客内容</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#博客功能添加"><span class="nav-number">2.1.</span> <span class="nav-text">博客功能添加</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#添加标签、分类、目录"><span class="nav-number">2.1.1.</span> <span class="nav-text">添加标签、分类、目录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#添加文章阅读次数"><span class="nav-number">2.1.2.</span> <span class="nav-text">添加文章阅读次数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#添加评论"><span class="nav-number">2.1.3.</span> <span class="nav-text">添加评论</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#添加搜索、音乐外链播放器"><span class="nav-number">2.1.4.</span> <span class="nav-text">添加搜索、音乐外链播放器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改文章链接文本样式"><span class="nav-number">2.1.5.</span> <span class="nav-text">修改文章链接文本样式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#添加字数统计和阅读时长功能"><span class="nav-number">2.1.6.</span> <span class="nav-text">添加字数统计和阅读时长功能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改标签样式"><span class="nav-number">2.1.7.</span> <span class="nav-text">修改标签样式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改代码高亮样式"><span class="nav-number">2.1.8.</span> <span class="nav-text">修改代码高亮样式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#公式支持"><span class="nav-number">2.1.9.</span> <span class="nav-text">公式支持</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#打开NexT内部数学公式渲染引擎"><span class="nav-number">2.1.9.1.</span> <span class="nav-text">打开NexT内部数学公式渲染引擎</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#打开hexo渲染器"><span class="nav-number">2.1.9.2.</span> <span class="nav-text">打开hexo渲染器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#修改公式显示比例"><span class="nav-number">2.1.9.3.</span> <span class="nav-text">修改公式显示比例</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#博客功能配置和美化参考链接"><span class="nav-number">2.1.10.</span> <span class="nav-text">博客功能配置和美化参考链接</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#博客写作注意事项"><span class="nav-number">2.2.</span> <span class="nav-text">博客写作注意事项</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#插入图片"><span class="nav-number">2.2.1.</span> <span class="nav-text">插入图片</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#本地引用"><span class="nav-number">2.2.1.1.</span> <span class="nav-text">本地引用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#CDN引用"><span class="nav-number">2.2.1.2.</span> <span class="nav-text">CDN引用</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#踩过的坑"><span class="nav-number">3.</span> <span class="nav-text">踩过的坑</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#npm安装出现low-severity-vulnerabilities"><span class="nav-number">3.1.</span> <span class="nav-text">npm安装出现low severity vulnerabilities</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#hexo-g中出现template-render-error"><span class="nav-number">3.2.</span> <span class="nav-text">hexo g中出现template render error</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#官方解决方法"><span class="nav-number">3.2.1.</span> <span class="nav-text">官方解决方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#权益之计"><span class="nav-number">3.2.2.</span> <span class="nav-text">权益之计</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#结语"><span class="nav-number">4.</span> <span class="nav-text">结语</span></a></li></ol></div>
             
 
           </div>
@@ -926,7 +999,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="站点总字数">7k</span>
+    <span title="站点总字数">21k</span>
   
 
   
@@ -935,7 +1008,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="站点阅读时长">12 分钟</span>
+    <span title="站点阅读时长">38 分钟</span>
   
 </div>
 
@@ -1076,8 +1149,8 @@
 
 <script>
   var gitalk = new Gitalk({
-    clientID: '436d1efb3c5f89d6ec5b',
-    clientSecret: 'd4b1a1534d187bc80939f3fe2d0713c58f0a7a97',
+    clientID: 'be7749625d35f00096ea',
+    clientSecret: 'bc602d10a1f124e443a32dfc5a72783e04ba5acc',
     repo: 'Blogs-Comment',
     owner: 'HsinJhao',
     admin: ['HsinJhao'],
@@ -1095,6 +1168,326 @@
 
 
   
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
 
 
 

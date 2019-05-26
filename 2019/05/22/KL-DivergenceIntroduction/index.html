@@ -103,24 +103,20 @@
 
 
 
-  <meta name="description" content="前言由于之前的算法编写、调试等过程均在自己的电脑上运行，所以出于以下原因一直对Anaconda嗤之以鼻：  其存储空间有限，Anaconda会安装很多使用率很低的库； 本人有一种莫名的折腾的劲儿，喜欢精简而有效的原生python环境。  但最近为课题组在Windows Server 2019搭建服务器深度学习开发环境时，在构建原生python环境中(其实就是安装tensorflow这个磨人的小">
-<meta name="keywords" content="Anaconda,Deep Learning">
+  <meta name="description" content="KL散度简介KL散度的概念来源于概率论和信息论中。KL散度又被称为：相对熵、互熵、鉴别信息、Kullback熵、Kullback-Leible散度(即KL散度的简写)。在机器学习、深度学习领域中，KL散度被广泛运用于变分自编码器中(Variational AutoEncoder,简称VAE)、EM算法、GAN网络中。  KL散度定义KL散度的定义是建立在熵(Entropy)的基础上的。此处以离散随">
+<meta name="keywords" content="KL-Divergence">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Anaconda初体验(windows)">
-<meta property="og:url" content="https://hsinjhao.github.io/2019/05/16/AnacondaFirstExperience/index.html">
+<meta property="og:title" content="KL散度(Kullback-Leibler Divergence)介绍及详细公式推导">
+<meta property="og:url" content="https://hsinjhao.github.io/2019/05/22/KL-DivergenceIntroduction/index.html">
 <meta property="og:site_name" content="HsinJhao&#39;s Blogs">
-<meta property="og:description" content="前言由于之前的算法编写、调试等过程均在自己的电脑上运行，所以出于以下原因一直对Anaconda嗤之以鼻：  其存储空间有限，Anaconda会安装很多使用率很低的库； 本人有一种莫名的折腾的劲儿，喜欢精简而有效的原生python环境。  但最近为课题组在Windows Server 2019搭建服务器深度学习开发环境时，在构建原生python环境中(其实就是安装tensorflow这个磨人的小">
+<meta property="og:description" content="KL散度简介KL散度的概念来源于概率论和信息论中。KL散度又被称为：相对熵、互熵、鉴别信息、Kullback熵、Kullback-Leible散度(即KL散度的简写)。在机器学习、深度学习领域中，KL散度被广泛运用于变分自编码器中(Variational AutoEncoder,简称VAE)、EM算法、GAN网络中。  KL散度定义KL散度的定义是建立在熵(Entropy)的基础上的。此处以离散随">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://repo.continuum.io/assets/img/logo.png">
-<meta property="og:image" content="https://hsinjhao.github.io/2019/05/16/AnacondaFirstExperience/Anaconda修改python版本.png">
-<meta property="og:image" content="https://hsinjhao.github.io/2019/05/16/AnacondaFirstExperience/tensorflow-cpu-dependency.png">
-<meta property="og:image" content="https://hsinjhao.github.io/2019/05/16/AnacondaFirstExperience/tensorflow-gpu-dependency-win.png">
-<meta property="og:image" content="https://hsinjhao.github.io/2019/05/16/AnacondaFirstExperience/pytorch-setup.png">
-<meta property="og:updated_time" content="2019-05-17T15:04:02.724Z">
+<meta property="og:image" content="https://i.loli.net/2019/05/25/5ce90f6fd78fb14436.png">
+<meta property="og:updated_time" content="2019-05-26T06:13:19.888Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Anaconda初体验(windows)">
-<meta name="twitter:description" content="前言由于之前的算法编写、调试等过程均在自己的电脑上运行，所以出于以下原因一直对Anaconda嗤之以鼻：  其存储空间有限，Anaconda会安装很多使用率很低的库； 本人有一种莫名的折腾的劲儿，喜欢精简而有效的原生python环境。  但最近为课题组在Windows Server 2019搭建服务器深度学习开发环境时，在构建原生python环境中(其实就是安装tensorflow这个磨人的小">
-<meta name="twitter:image" content="https://repo.continuum.io/assets/img/logo.png">
+<meta name="twitter:title" content="KL散度(Kullback-Leibler Divergence)介绍及详细公式推导">
+<meta name="twitter:description" content="KL散度简介KL散度的概念来源于概率论和信息论中。KL散度又被称为：相对熵、互熵、鉴别信息、Kullback熵、Kullback-Leible散度(即KL散度的简写)。在机器学习、深度学习领域中，KL散度被广泛运用于变分自编码器中(Variational AutoEncoder,简称VAE)、EM算法、GAN网络中。  KL散度定义KL散度的定义是建立在熵(Entropy)的基础上的。此处以离散随">
+<meta name="twitter:image" content="https://i.loli.net/2019/05/25/5ce90f6fd78fb14436.png">
 
 
 
@@ -128,7 +124,7 @@
 
   
   
-  <link rel="canonical" href="https://hsinjhao.github.io/2019/05/16/AnacondaFirstExperience/">
+  <link rel="canonical" href="https://hsinjhao.github.io/2019/05/22/KL-DivergenceIntroduction/">
 
 
 
@@ -138,7 +134,7 @@
   };
 </script>
 
-  <title>Anaconda初体验(windows) | HsinJhao's Blogs</title>
+  <title>KL散度(Kullback-Leibler Divergence)介绍及详细公式推导 | HsinJhao's Blogs</title>
   
 
 
@@ -398,7 +394,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://hsinjhao.github.io/2019/05/16/AnacondaFirstExperience/">
+    <link itemprop="mainEntityOfPage" href="https://hsinjhao.github.io/2019/05/22/KL-DivergenceIntroduction/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="HsinJhao">
@@ -415,7 +411,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Anaconda初体验(windows)
+          <h1 class="post-title" itemprop="name headline">KL散度(Kullback-Leibler Divergence)介绍及详细公式推导
 
               
             
@@ -441,7 +437,7 @@
                 
               
 
-              <time title="创建时间：2019-05-16 15:07:47" itemprop="dateCreated datePublished" datetime="2019-05-16T15:07:47+08:00">2019-05-16</time>
+              <time title="创建时间：2019-05-22 17:18:11" itemprop="dateCreated datePublished" datetime="2019-05-22T17:18:11+08:00">2019-05-22</time>
             
 
             
@@ -458,7 +454,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-05-17 23:04:02" itemprop="dateModified" datetime="2019-05-17T23:04:02+08:00">2019-05-17</time>
+                <time title="修改时间：2019-05-26 14:13:19" itemprop="dateModified" datetime="2019-05-26T14:13:19+08:00">2019-05-26</time>
               
             
           </span>
@@ -475,7 +471,14 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/软件使用/" itemprop="url" rel="index"><span itemprop="name">软件使用</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Deep-Learning/" itemprop="url" rel="index"><span itemprop="name">Deep Learning</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Deep-Learning/Math/" itemprop="url" rel="index"><span itemprop="name">Math</span></a></span>
 
                 
                 
@@ -490,7 +493,7 @@
 
           
           
-            <span id="/2019/05/16/AnacondaFirstExperience/" class="leancloud_visitors" data-flag-title="Anaconda初体验(windows)">
+            <span id="/2019/05/22/KL-DivergenceIntroduction/" class="leancloud_visitors" data-flag-title="KL散度(Kullback-Leibler Divergence)介绍及详细公式推导">
               <span class="post-meta-divider">|</span>
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
@@ -515,7 +518,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">2.8k</span>
+                <span title="本文字数">11k</span>
               
 
               
@@ -529,7 +532,7 @@
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">5 分钟</span>
+                <span title="阅读时长">19 分钟</span>
               
             </div>
           
@@ -549,79 +552,289 @@
       
 
       
-        <p><img src="https://repo.continuum.io/assets/img/logo.png" alt="Anaconda"></p>
+        <h1 id="KL散度简介"><a href="#KL散度简介" class="headerlink" title="KL散度简介"></a>KL散度简介</h1><p>KL散度的概念来源于概率论和信息论中。KL散度又被称为：相对熵、互熵、鉴别信息、<code>Kullback</code>熵、<code>Kullback-Leible</code>散度(即KL散度的简写)。在机器学习、深度学习领域中，KL散度被广泛运用于变分自编码器中(<code>Variational AutoEncoder</code>,简称VAE)、EM算法、GAN网络中。</p>
 <hr>
-<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>由于之前的算法编写、调试等过程均在自己的电脑上运行，所以出于以下原因一直对Anaconda嗤之以鼻：</p>
-<ul>
-<li>其存储空间有限，Anaconda会安装很多<code>使用率很低</code>的库；</li>
-<li>本人有一种莫名的<code>折腾</code>的劲儿，喜欢精简而有效的原生python环境。</li>
-</ul>
-<p>但最近为课题组在<strong>Windows Server 2019</strong>搭建服务器深度学习开发环境时，在构建原生python环境中(其实就是安装<strong>tensorflow</strong>这个磨人的小妖精)屡屡受挫，<br>不再想理什么<code>DLL Load fail</code>、<code>ImportError</code>；并且服务器非我一人使用，有人习惯Anaconda，故尝试直接将Anaconda的python环境<br>作为系统默认Python开发环境。以下是个人的折腾记录。</p>
-<hr>
-<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><p>安装推荐官网下载对应平台的程序安装包，此处贴出<a href="https://www.anaconda.com/distribution/" target="_blank" rel="noopener">Anaconda官网地址</a>。<br>若要下载历史版本，可见<a href="https://repo.continuum.io/archive/" target="_blank" rel="noopener">链接</a>。</p>
-<p>需要注意的是，每一版的Anaconda都与某一版本的Python版本有所关联，如果不想后期更改<code>base(root)</code>环境或新建其他python版本环境的话，最好选择某一版本的Anaconda<br>进行安装。二者版本对应情况可见<a href="https://blog.csdn.net/yuejisuo1948/article/details/81043823" target="_blank" rel="noopener">链接</a>。<br>在安装过程中，注意以下几个设置：</p>
-<ul>
-<li>安装路径</li>
-<li>是否添加Anacona至环境变量</li>
-<li>是否设置Anaconda所安装的python为默认python环境</li>
-</ul>
-<p>其中安装路径根据实际情况进行设置。笔者一般软件安装路径为非系统盘，如<code>D:\Anaconda3</code>(后续Anaconda的安装路径将写作此路径).若你本机上已安装了python，后两者均不建议进行设置，因为其会改变<br>系统变量中的python环境变量。如有需要，后续可进行更改。如：</p>
-<ul>
-<li><p>添加Anacona至环境变量：添加以下地址至环境变量</p>
- <figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">D:\<span class="title">Anaconda3</span></span></span><br><span class="line"><span class="function"><span class="title">D</span>:\<span class="title">Anaconda3</span>\<span class="title">Library</span></span></span><br><span class="line"><span class="function"><span class="title">D</span>:\<span class="title">Anaconda3</span>\<span class="title">Scripts</span></span></span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<hr>
-<h1 id="直接更改base-root-环境下的python版本"><a href="#直接更改base-root-环境下的python版本" class="headerlink" title="直接更改base(root)环境下的python版本"></a>直接更改base(root)环境下的python版本</h1><p>此需求大多是为安装tensorflow-gpu而衍生出，因为其对python版本、CUDA等要求甚严。假设需要将默认的python版本(3.7.3)更改为3.6.8，<br>可参考以下两种方式(<a href="https://blog.csdn.net/isyiming/article/details/79225608" target="_blank" rel="noopener">参考链接</a>)：</p>
-<h2 id="Anaconda-Navigator中进行更改"><a href="#Anaconda-Navigator中进行更改" class="headerlink" title="Anaconda Navigator中进行更改"></a>Anaconda Navigator中进行更改</h2><p>打开Anaconda Navigator，找到Environment中base(root)下已安装的python,右键图标进行更改，如下图：</p>
-<ul>
-<li>点击<code>base</code>切换到python环境</li>
-<li>搜索已安装的<code>python</code>库</li>
-<li>右键点击<code>python</code>可出现<code>Mark for specific version installation</code>选项</li>
-<li>点击想切换的<code>python</code>版本代号</li>
-<li>点击页面下方<code>apply</code>按钮即可执行修改(图中未显示)<br><img src="Anaconda修改python版本.png" alt="Anaconda修改python版本"></li>
-</ul>
-<h2 id="Anaconda-Prompt中进行更改"><a href="#Anaconda-Prompt中进行更改" class="headerlink" title="Anaconda Prompt中进行更改"></a>Anaconda Prompt中进行更改</h2><p>直接打开终端或者Anaconda Prompt,输入以下命令：</p>
-<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda install python=<span class="number">3</span>.<span class="number">6</span>.<span class="number">8</span></span><br></pre></td></tr></table></figure>
-<p>若不对默认的base(root)环境进行修改，也可以直接新建相应python版本的环境，以满足需求。在此不做赘述。</p>
-<hr>
-<h1 id="Anaconda-Channels-无法更改后的折衷方案"><a href="#Anaconda-Channels-无法更改后的折衷方案" class="headerlink" title="Anaconda Channels 无法更改后的折衷方案"></a>Anaconda Channels 无法更改后的折衷方案</h1><p>众所周知，由于<code>GFW</code>的原因，国外诸多网站在国内无法正常访问。于是催生出了一系列国内源镜像，为大家提供方便。原本Anaconda在国内也是有镜像源地址的，但是最近由于版权或商标问题，国内诸多镜像地址，如<a href="https://mirrors.tuna.tsinghua.edu.cn/" target="_blank" rel="noopener">清华大学镜像</a>、<a href="http://mirrors.ustc.edu.cn/" target="_blank" rel="noopener">中科大镜像</a>、<a href="http://mirrors.nju.edu.cn/" target="_blank" rel="noopener">南京大学镜像</a>等镜像网站均关闭了对conda源的支持,直接将其链接至官方镜像地址。以下是相关情况的说明和更新：</p>
-<ul>
-<li><a href="https://mirrors.tuna.tsinghua.edu.cn/news/close-anaconda-service/" target="_blank" rel="noopener">2019-04-16:清华大学关于停止Anaconda镜像服务的通知</a></li>
-<li><a href="https://servers.ustclug.org/2019/04/close-anaconda-service/" target="_blank" rel="noopener">2019-04-25:中科大Anaconda 镜像停止服务</a></li>
-<li><a href="https://zhuanlan.zhihu.com/p/62899936" target="_blank" rel="noopener">知乎:Anaconda 清华源关闭后，怎么办？</a></li>
-</ul>
-<p>所以目前修改Anaconda Channels基本无效，除非是自己搭梯子。否则就自己用官方源慢慢安装和更新吧(<strong>亲测要等很久才能安装上一个库</strong>)。若针对已成功安装Anaconda的用户来说，可以激活Anaconda环境后，用pip命令对第三方库进行安装或者更新。这是一个折衷的方法了。因为pip在国内的镜像地址是可以用的，其中清华的镜像是比较快的。关于修改pip源镜像的地址，可以参考<a href="https://foofish.net/pip.html" target="_blank" rel="noopener">此链接</a>。</p>
-<hr>
-<h1 id="Anaconda安装深度学习框架"><a href="#Anaconda安装深度学习框架" class="headerlink" title="Anaconda安装深度学习框架"></a>Anaconda安装深度学习框架</h1><p>无论是tensorflow还是PyTorch，在GPU的环境下更能发挥其加速作用。安装cpu版本的深度学习框架配置起来较为简单顺畅，在此不做赘述，可自行百度。</p>
-<h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><p>由于利用Anaconda搭建基于Tensorflow或Pytorch的深度学习框架不需要自己安装其他的依赖性，所以个人推荐此方法。若想自己根据原生python搭建上述框架，便需要自行进行以下操作：</p>
-<ul>
-<li>确认自己具有Nvidia的显卡，安装最新<a href="https://www.nvidia.com/Download/index.aspx?lang=cn" target="_blank" rel="noopener">Nvidia显卡驱动</a></li>
-<li>安装<a href="https://developer.nvidia.com/cuda-downloads" target="_blank" rel="noopener">CUDA</a></li>
-<li>安装<a href="https://developer.nvidia.com/rdp/cudnn-download" target="_blank" rel="noopener">cudnn</a></li>
-</ul>
-<p>需要注意的是，cudnn需要注册Nvidia开发者账户才可以进行下载。其中与tensorflow或pytorch的版本需要一一对应，tensorflow所支持的cuda对应版本可查看<a href="https://www.tensorflow.org/install/source_windows" target="_blank" rel="noopener">此链接</a>寻找适合的版本或参考以下图片：</p>
-<p><img src="tensorflow-cpu-dependency.png" alt="tensorflow-cpu-win-dependency"><br><img src="tensorflow-gpu-dependency-win.png" alt="tensorflow-gpu-win-dependency"></p>
-<h2 id="Anaconda安装Tensorflow"><a href="#Anaconda安装Tensorflow" class="headerlink" title="Anaconda安装Tensorflow"></a>Anaconda安装Tensorflow</h2><p>在Anaconda中安装Tensorflow的过程还是较为简单的，只需要搜索到相应的Tensorflow库，然后选择对应的版本安装即可。因为其会根据所选择的tensorflow版本安装对应的<strong>cuda</strong>和<strong>cudnn</strong>以支持GPU加速。</p>
-<h2 id="Anaconda安装Pytorch"><a href="#Anaconda安装Pytorch" class="headerlink" title="Anaconda安装Pytorch"></a>Anaconda安装Pytorch</h2><p>Pytorch的安装更加人性化，不需要进行各种配置，版本之间的依赖也较少。可以直接选择与cuda相对应版本的pytorch进行安装，如下图：<br><img src="pytorch-setup.png" alt="Pytorch安装"></p>
-<h2 id="安装测试"><a href="#安装测试" class="headerlink" title="安装测试"></a>安装测试</h2><p>安装上述环境后均需要进行测试，查看是否能够正常使用。<br>打开cmd并启动python开发环境后，可输入以下测试代码进行测试：</p>
-<ul>
-<li><blockquote>
-<p>Tensorflow-gpu测试代码</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line">matrix1 = tf.constant([[<span class="number">3.</span>, <span class="number">3.</span>]])     </span><br><span class="line">matrix2 = tf.constant([[<span class="number">2.</span>],[<span class="number">2.</span>]])    </span><br><span class="line">product = tf.matmul(matrix1, matrix2) </span><br><span class="line">sess = tf.Session()</span><br><span class="line">print(sess.run(product))</span><br></pre></td></tr></table></figure>
+<h1 id="KL散度定义"><a href="#KL散度定义" class="headerlink" title="KL散度定义"></a>KL散度定义</h1><p>KL散度的定义是建立在熵(Entropy)的基础上的。此处以离散随机变量为例，先给出熵的定义，再给定KL散度定义。</p>
+<p>若一个离散随机变量$\mathbf{X}$的可能取值为$X=\{x_1,x_2,\cdots,x_n\}$，而对应的概率为$p_i = p(X = x_i)$，则随机变量$\mathbf{X}$的熵定义为：</p>
+<script type="math/tex; mode=display">
+H(X) = - \sum_{i=1}^{n} p(x_i) \log p(x_{i})</script><blockquote>
+<p>规定当$p(x_i) = 0$时,$p(x_i) \log p(x_i) = 0$</p>
 </blockquote>
-</li>
-</ul>
-<p>若输出的信息中有显卡信息，并且没有报错，成功输出结果，则安装成功，可正常使用tensorflow-gpu。</p>
-<ul>
-<li><blockquote>
-<p>Pytorch-gpu测试代码</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line">torch.cuda.is_available()</span><br></pre></td></tr></table></figure>
+<p>若有两个随机变量$\mathbf{P、Q}$，且其概率分布分别为$p(x)、q(x)$，则$p$相对$q$的相对熵为：</p>
+<script type="math/tex; mode=display">
+D_{KL}(p||q) = \sum_{i=1}^{n}p(x) \log \frac{p(x)}{q(x)}</script><p>之所以称之为相对熵，是因为其可以通过两随机变量的<a href="https://www.wikiwand.com/zh-hans/%E4%BA%A4%E5%8F%89%E7%86%B5" target="_blank" rel="noopener">交叉熵(Cross-Entropy)</a>以及信息熵推导得到：<br>针对上述离散变量的概率分布$p(x)、q(x)$而言，其交叉熵定义为：</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+H(p,q) = & \sum_{x}p(x) \log \frac{1}{q(x)} \\
+= & - \sum_{x} p(x) \log q(x)
+\end{aligned}</script><blockquote>
+<p>在信息论中，交叉熵可认为是对预测分布$q(x)$用真实分布$p(x)$来进行编码时所需要的信息量大小。</p>
 </blockquote>
+<p>因此，KL散度或相对熵可通过下式得出：</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+D_{KL}(p||q) = & H(p,q)-H(p) \\
+=& - \sum_{x} p(x) \log q(x) - \sum_{x}-p(x)\log p(x)\\
+=& -\sum_{x} p(x) (\log q(x)-\log p(x))\\
+=& -\sum_{x}p(x) \log \frac{q(x)}{p(x)}
+\end{aligned}</script><hr>
+<h1 id="KL散度的数学性质"><a href="#KL散度的数学性质" class="headerlink" title="KL散度的数学性质"></a>KL散度的数学性质</h1><p>KL散度可以用来衡量两个分布之间的差异，其具有如下数学性质：</p>
+<h2 id="正定性"><a href="#正定性" class="headerlink" title="正定性"></a>正定性</h2><script type="math/tex; mode=display">
+D_{KL}(p||q) \geq  0</script><p>可用Gibbs 不等式直接得出。先给出Gibbs不等式的内容：</p>
+<p>若$\sum_{i=1}^{n} p_i = \sum_{i=1}^{n} q_i  = 1$,且$p_i,q_i \in(0,1]$,则有：</p>
+<script type="math/tex; mode=display">
+ -\sum_{i}^{n} p_i \log p_i \leq -\sum_{i}^{n} p_i \log q_i</script><p>当且仅当$p_i=q_i \forall i$等号成立。</p>
+<p>Gibbs不等式的证明可见后文附录。</p>
+<h2 id="不对称性"><a href="#不对称性" class="headerlink" title="不对称性"></a>不对称性</h2><p>KL散度并不是一个真正的度量或者距离，因为它不具有对称性：</p>
+<script type="math/tex; mode=display">
+D(p \| q) \neq D(q \| p)</script><blockquote>
+<p>各种散度中，Jensen-Shannon divergence(JS散度)是对称的。</p>
+</blockquote>
+<p>对KL散度不对称性的直观解释可见<a href="https://zhuanlan.zhihu.com/p/45131536" target="_blank" rel="noopener">链接</a>。</p>
+<hr>
+<h1 id="从不同角度解读KL散度"><a href="#从不同角度解读KL散度" class="headerlink" title="从不同角度解读KL散度"></a>从不同角度解读KL散度</h1><h2 id="统计学意义上的KL散度"><a href="#统计学意义上的KL散度" class="headerlink" title="统计学意义上的KL散度:"></a>统计学意义上的KL散度:</h2><p>在统计学意义上来说，KL散度可以用来衡量两个分布之间的差异程度。若两者差异越小，KL散度越小，反之亦反。当两分布一致时，其KL散度为0。正是因为其可以衡量两个分布之间的差异，所以在VAE、EM、GAN中均有使用到KL散度。</p>
+<h2 id="信息论角度的KL散度"><a href="#信息论角度的KL散度" class="headerlink" title="信息论角度的KL散度:"></a>信息论角度的KL散度:</h2><p>KL散度在信息论中的专业术语为相对熵。其可理解为编码系统对信息进行编码时所需要的平均附加信息量。其中信息量的单位随着计算公式中$log$运算的底数而变化。</p>
+<blockquote>
+<ul>
+<li>log底数为2：单位为比特(<code>bit</code>)</li>
+<li>log底数为<code>e</code>：单位为奈特(<code>nat</code>)</li>
+</ul>
+</blockquote>
+<p>若对从统计学角度直观解释KL散度感兴趣，可参阅以下文章：</p>
+<ul>
+<li>英文版[推荐]:<a href="https://www.countbayesie.com/blog/2017/5/9/kullback-leibler-divergence-explained" target="_blank" rel="noopener">Kullback-Leibler Divergence Explained</a></li>
+<li>英文版中文翻译[推荐]: <a href="https://blog.csdn.net/xzy_thu/article/details/71730507" target="_blank" rel="noopener">解释Kullback-Leibler散度</a></li>
+<li>中文版:<a href="https://www.jiqizhixin.com/articles/2018-05-29-2" target="_blank" rel="noopener">直观解读KL散度的数学概念</a></li>
+</ul>
+<hr>
+<h1 id="连续随机变量的KL散度推导"><a href="#连续随机变量的KL散度推导" class="headerlink" title="连续随机变量的KL散度推导"></a>连续随机变量的KL散度推导</h1><h2 id="服从一维高斯分布的随机变量KL散度"><a href="#服从一维高斯分布的随机变量KL散度" class="headerlink" title="服从一维高斯分布的随机变量KL散度"></a>服从一维高斯分布的随机变量KL散度</h2><h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p>假设 <code>p</code> 和 <code>q</code> 均是服从$N~(\mu_1,\sigma_1^2)$和$N~(\mu_2,\sigma_2^2)$的随机变量的概率密度函数 (<em>probability density function</em>) ，则从 <code>q</code>  到 <code>p</code> 的KL散度定义为：</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+D_{KL}(p||q)=& \int \left[\log(p(x)) - \log( q(x)) \right]p(x)\ dx \\
+=& \int \left[ \ p(x)\log(p(x)) - p(x)\log(q(x)) \right ] \ dx
+\end{aligned}</script><p>  已知正态分布的概率密度函数(<code>probability density function</code>)如下式：</p>
+<script type="math/tex; mode=display">
+  \begin{aligned}
+  p(x)=\frac{1}{\sqrt{2\pi}\sigma_1} \exp\left(-\frac{(x-\mu_1)^2}{2\sigma_1^2}  \right)
+  \\
+  q(x)=\frac{1}{\sqrt{2\pi}\sigma_2} \exp\left(-\frac{(x-\mu_2)^2}{2\sigma_2^2}  \right)
+  \end{aligned}</script><h3 id="KL散度推导"><a href="#KL散度推导" class="headerlink" title="KL散度推导"></a>KL散度推导</h3><p>  根据$KL$散度公式可以将其分为两项进行计算，第一项$\int p(x)\log(p(x)) dx$计算如下：</p>
+<script type="math/tex; mode=display">
+  \begin{aligned}
+  \int p(x)\log(p(x)) dx
+  =& \int p(x) \log \left[\frac{1}{\sqrt{2\pi}\sigma_1} exp\left(-\frac{(x-\mu_1)^2}{2\sigma_1^2}  \right)\right ] dx
+  \\
+  =& \int p(x) \left[ \log \frac{1}{\sqrt{2\pi}\sigma_1} + \log exp\left(-\frac{(x-\mu_1)^2}{2\sigma_1^2}  \right) \right] dx
+  \\
+  =& -\frac{1}{2}\log(2\pi\sigma_1^2) + \int p(x)\left(-\frac{(x-\mu_1)^2}{2\sigma_1^2}  \right) dx
+  \\
+  =& -\frac{1}{2}\log(2\pi\sigma_1^2) - \frac{\int p(x) x^2 dx - \int p(x) 2x\mu_1 dx + \int p(x) \mu_1^2 dx}{2 \sigma_1^2} 
+  \\
+  =& -\frac{1}{2}\log(2\pi\sigma_1^2) - \frac{(\mu_1^2+\sigma_1^2)\ - (2\mu_1\times\mu_1) \ + \mu_1^2}{2 \sigma_1^2} 
+  \\
+  =& - \frac{1}{2} \left[ 1+\log(2\pi \sigma_1^2) \right]
+  \end{aligned}</script><p>  第二项可以同第一项按照类似的方式进行展开化简，如下：</p>
+<script type="math/tex; mode=display">
+  \begin{aligned}
+  \int p(x)\log(q(x)) dx 
+  =& \int p(x) \log \left[\frac{1}{\sqrt{2\pi}\sigma_2} exp\left(-\frac{(x-\mu_2)^2}{2\sigma_2^2}  \right)\right ] dx
+  \\
+  =& \int p(x) \left[ \log \frac{1}{\sqrt{2\pi}\sigma_2} + \log exp\left(-\frac{(x-\mu_2)^2}{2\sigma_2^2}  \right) \right] dx
+  \\
+  =& -\frac{1}{2}\log(2\pi\sigma_2^2) + \int p(x)\left(-\frac{(x-\mu_2)^2}{2\sigma_2^2}  \right) dx
+  \\
+  =& -\frac{1}{2}\log(2\pi\sigma_2^2) - \frac{\int p(x) x^2 dx - \int p(x) 2x\mu_2 dx + \int p(x) \mu_2^2 dx}{2 \sigma_2^2} 
+  \\
+  =& -\frac{1}{2}\log(2\pi\sigma_2^2) - \frac{(\mu_1^2+\sigma_1^2)\ - (2\mu_2\times\mu_1) \ + \mu_2^2}{2 \sigma_2^2} 
+  \\
+  =& -\frac{1}{2}\log(2\pi\sigma_2^2) - \frac{\sigma_1^2\ + (\mu_1 -\mu_2)^2 }{2 \sigma_2^2} 
+  \end{aligned}</script><p>  所以可以简化<code>KL</code>散度公式如下：</p>
+<script type="math/tex; mode=display">
+  \begin{aligned}
+  KL(p,q)
+  =& \int \left[\ p(x)\log(p(x)) - p(x)\log(q(x))\right ]\ dx
+  \\
+  =& - \frac{1}{2} \left[ 1+\log(2\pi \sigma_1^2) \right] - \left[-\frac{1}{2}\log(2\pi\sigma_2^2) - \frac{\sigma_1^2\ + (\mu_1 -\mu_2)^2 }{2 \sigma_2^2} \right]
+  \\
+  =& \ \log \frac{\sigma_2}{\sigma_1} \ +\frac{\sigma_1^2\ + (\mu_1 -\mu_2)^2 }{2 \sigma_2^2} \ - \frac{1}{2}
+  \end{aligned}</script><h2 id="服从多元高斯分布的随机变量KL散度"><a href="#服从多元高斯分布的随机变量KL散度" class="headerlink" title="服从多元高斯分布的随机变量KL散度"></a>服从多元高斯分布的随机变量KL散度</h2><h3 id="定义-1"><a href="#定义-1" class="headerlink" title="定义"></a>定义</h3><p>其定义与一元高斯分布假设下一致，只是 <code>p</code> 和 <code>q</code> 服从的分布形式产生了改变：</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+p(x) & \sim N~(\mathbf{\mu_1},\Sigma_1^2) \\
+ &=  {1 \over { { {(2\pi )}^{n/2} }{ {\left| \Sigma_{1} 
+    \right|}^{1/2} } } }\exp  \left(- {1 \over 2}{(x - \mu_{1})^T}{\Sigma_{1} ^{ - 1} }(x
+    - \mu_{1})\right )
+ \end{aligned}</script><script type="math/tex; mode=display">
+\begin{aligned}
+q(x) 
+&
+ \sim N~(\mathbf{\mu_{2} },\Sigma_{2}^2) \\
+ &=  {1 \over { { {(2\pi )}^{n/2} }{ {\left| \Sigma_{2} 
+    \right|}^{1/2} } } }\exp  \left(- {1 \over 2}{(x - \mu_{2})^T}{\Sigma_{2} ^{ - 1} }(x
+    - \mu_{2})\right )
+ \end{aligned}</script><p>其中:</p>
+<script type="math/tex; mode=display">\mu_{1},\mu_{2} \in \mathbb{R^{n\times 1} }</script><script type="math/tex; mode=display">\Sigma_{1},\Sigma_{2} \in \mathbb{R^{n\times n} }</script><h3 id="KL散度推导-1"><a href="#KL散度推导-1" class="headerlink" title="KL散度推导"></a>KL散度推导</h3><p>与一元高斯分布类似，可将$D_{KL}(p||q)$分为两部分：</p>
+<p>第一部分：</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+& \int p(x)\log(p(x)) dx\\
+= & \int p(x) \log \left[\frac{1}{ {(2\pi)^{n/2} } | \Sigma_{1} | ^{1/2} } exp\left(- {1 \over 2}{(x - \mu_{1})^T}{\Sigma_{1} ^{ - 1} }(x
+    - \mu_{1})\right )\right ] dx
+  \\
+= & \int p(x) \left[ \log \frac{1}{ {(2\pi)^{n/2} } | \Sigma_{1} | ^{1/2} } + \log exp\left(- {1 \over 2}{(x - \mu_{1})^T}{\Sigma_{1} ^{ - 1} }(x
+    - \mu_{1})\right ) \right] dx
+  \\
+= & \log \frac{1}{ {(2\pi)^{n/2} } | \Sigma_1 | ^{1/2} } + \int p(x) \left(- {1 \over 2}{(x - \mu_{1})^T}{\Sigma_{1} ^{ - 1} }(x
+    - \mu_{1})\right ) dx \\
+= & \log \frac{1}{ {(2\pi)^{n/2} } | \Sigma_1 | ^{1/2} }  + E_{p(x)}\left[- {1 \over 2}{(x - \mu_{1})^T}{\Sigma_{1} ^{ - 1} }(x
+    - \mu_{1})\right] \\
+= & \log \frac{1}{ {(2\pi)^{n/2} } | \Sigma_1 | ^{1/2} }  - {1 \over 2} E_{p(x)}\left[{(x - \mu_{1})^T}{\Sigma_{1} ^{ - 1} }(x
+    - \mu_{1})\right] 
+\end{aligned}</script><p>同理，第二部分可写为：</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\\ 
+& \int p(x)\log(q(x)) dx\\
+= & \log \frac{1}{ {(2\pi)^{n/2} } | \Sigma_{2} | ^{1/2} }  - {1 \over 2} E_{p(x)}\left[{(x - \mu_{2})^T}{\Sigma_{2} ^{ - 1} }(x
+    - \mu_{2})\right]
+\end{aligned}</script><p>因此可将服从多元高斯分布随机变量的KL散度写为：</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+D_{KL}(p||q) & = 
+\int p(x)\log(p(x)) dx-\int p(x)\log(q(x)) dx
+\\
+& = \log \frac{ {(2\pi)^{n/2} } | \Sigma_{2} | ^{1/2} }{ {(2\pi)^{n/2} } | \Sigma_1 | ^{1/2} }  
+- {1 \over 2} E_{p(x)}\left[{(x - \mu_{1})^T}{\Sigma_{1} ^{ - 1} }(x
+    - \mu_{1})\right] 
++{1 \over 2} E_{p(x)}\left[{(x - \mu_{2})^T}{\Sigma_{2} ^{ - 1} }(x
+    - \mu_{2})\right] \\
+& = \frac{1}{2}\log \frac{ | \Sigma_{2} | }{ {} | \Sigma_1 | }  
++ \frac{1}{2}E_{p(x)}\left[{(x - \mu_{2})^T}{\Sigma_{2} ^{ - 1} }(x
+    - \mu_{2}) - {(x - \mu_{1})^T}{\Sigma_{1} ^{ - 1} }(x
+    - \mu_{1})\right]
+\end{aligned}</script><p>其中$E_{p}(\cdot)$代表$\cdot$在概率密度函数$p(x)$的期望。此处需引入涉及多元变量的期望矩阵化求解方法。具体证明见后续附录，此处直接给出多元正态分布下期望矩阵化的表示结果：</p>
+<script type="math/tex; mode=display">
+E\left( { {x^T}Ax} \right) = tr(A\Sigma ) + {\mu^T}A\mu</script><p>因此：</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+D_{KL}(p||q) 
+& = 
+ \frac{1}{2}\log \frac{ | \Sigma_{2} | }{ {} | \Sigma_1 | }  
++ \frac{1}{2}E_{p(x)}\left[{(x - \mu_{2})^T}{\Sigma_{2} ^{ - 1} }(x
+- \mu_{2}) - {(x - \mu_{1})^T}{\Sigma_{1} ^{ - 1} }(x
+- \mu_{1})\right]\\
+& = 
+\frac{1}{2}\log \frac{ | \Sigma_{2} | }{ {} | \Sigma_1 | }  
++ \frac{1}{2}tr(\Sigma_{2}^{-1}\Sigma_{1})  + (\mu_{1}-\mu_{2})^{T}\Sigma_{2}^{-1}(\mu_{1}-\mu_{2})^{T} \\
+&\qquad \qquad \qquad 
+- \frac{1}{2}tr(\Sigma_{1}^{-1}\Sigma_{1})  +  (\mu_{1}-\mu_{1})^{T}\Sigma_{2}^{-1}(\mu_{1}-\mu_{1})^{T} \\
+& = 
+\frac{1}{2}\log \frac{ | \Sigma_{2} | }{ {} | \Sigma_1 | }  
++ \frac{1}{2}tr(\Sigma_{2}^{-1}\Sigma_{1})  + (\mu_{1}-\mu_{2})^{T}\Sigma_{2}^{-1}(\mu_{1}-\mu_{2})^{T} - \frac{1}{2} n
+\end{aligned}</script><hr>
+<h1 id="附录"><a href="#附录" class="headerlink" title="附录"></a>附录</h1><h2 id="多元高斯分布下期望证明："><a href="#多元高斯分布下期望证明：" class="headerlink" title="多元高斯分布下期望证明："></a>多元高斯分布下期望证明：</h2><p>为证明多元高斯分布下，下式：</p>
+<script type="math/tex; mode=display">E\left( {x^T Ax} \right) = tr(A\Sigma ) + {\mu^T}A\mu</script><p>成立，需引入以下性质:</p>
+<ul>
+<li><p>矩阵的迹的性质：</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+tr(\alpha A + \beta B)  &= \alpha tr(A) + \beta tr(B)\\
+tr(A) &= tr({A^T})\\
+tr(AB) &= tr(BA)\\
+&\Rightarrow tr(ABC) = tr(CAB) = tr(BCA)
+\end{aligned}</script></li>
+</ul>
+<blockquote>
+<p>若$\lambda \in \mathbb{R^{n\times 1} }$，即$\lambda$为列向量时，则${\lambda ^T}A\lambda$为标量，存在以下性质：</p>
+<script type="math/tex; mode=display">{\lambda ^T}A\lambda  = tr({\lambda ^T}A\lambda ) = tr(A\lambda {\lambda ^T})</script></blockquote>
+<ul>
+<li><p>多元高斯分布中均值$\mu$和方差$\Sigma$的性质：</p>
+<ul>
+<li><p>$E\left[ {x{x^T} } \right] = \Sigma  + \mu{\mu^T}$:</p>
+<p>   证明：</p>
 </li>
 </ul>
-<p>输出<code>true</code>，则说明GPU驱动和CUDA可以支持Pytorch的加速计算。</p>
-<h1 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h1><p>上述是简单的Anaconda安装和深度学习框架搭建基本流程。如需了解细节可阅读相应参考链接。</p>
+<script type="math/tex; mode=display">
+ \begin{aligned}
+\Sigma &= E[(x-\mu)(x-\mu)^{T}]  \\
+ \because(A-B)^{T} = A^{T}-B^{T }    \quad 
+\therefore \quad
+&=E[(x-\mu)(x^{T}-\mu^{T })]\\
+& = E[xx^{T} - x \mu^{T}-\mu x^{T}- \mu \mu^{T }] \\
+ \because x:随机变量 \quad \mu:const \quad
+ \therefore \quad
+& = E(xx^{T}) - E(x)\mu^{T} - \mu E(x^{T}) - \mu \mu^{T}\\
+& =  E(xx^{T}) -  \mu \mu^{T}
+ \end{aligned}</script><ul>
+<li><p>$E\left( {x^T Ax} \right) = tr(A\Sigma ) + {\mu^T}A\mu$:</p>
+<p>证明：<br>由于$x^{T}Ax$最终结果为标量，利用前述矩阵的迹的性质可有：</p>
+</li>
+</ul>
+<script type="math/tex; mode=display">
+  \begin{aligned}
+E\left( { {x^T}Ax} \right)  
+&  = E\left[ {tr({x^T}Ax)} \right]  \\
+&  = E\left[ {tr(Ax{x^T})} \right]  \\
+&  = tr\left[ {E\left( {Ax{x^T} } \right)} \right]  \\
+&  = tr\left[ {AE\left( {x{x^T} } \right)} \right]  \\
+ \because A = const  \quad 
+ \therefore \quad
+&  = tr\left[ {A(\Sigma  + u{u^T})} \right]    \\
+ \because E\left[ {x{x^T} } \right] = \Sigma  + \mu{\mu^T}   \quad \therefore \quad
+&  = tr(A\Sigma ) + tr(A\mu{\mu^T})  
+\\ 
+&  = tr(A\Sigma ) + tr({\mu^T}A\mu)  \\
+ \because {\mu^T}A\mu \in \mathbb{R} \quad 
+ \therefore \quad
+&  = tr(A\Sigma ) + {\mu^T}A\mu \\
+
+   \end{aligned}</script></li>
+</ul>
+<h2 id="Gibbs不等式的证明"><a href="#Gibbs不等式的证明" class="headerlink" title="Gibbs不等式的证明"></a>Gibbs不等式的证明</h2><p>Gibbs不等式的内容如下：</p>
+<p>若$\sum_{i=1}^{n} p_i = \sum_{i=1}^{n} q_i  = 1$,且$p_i,q_i \in(0,1]$,则有：</p>
+<script type="math/tex; mode=display">
+ -\sum_{i}^{n} p_i \log p_i \leq -\sum_{i}^{n} p_i \log q_i</script><p>当且仅当$p_i=q_i \forall i$等号成立。</p>
+<p>Gibbs不等式等价于下式：</p>
+<script type="math/tex; mode=display">
+0 
+\geq  \sum_{i=1}^{n} p_{i} \log q_{i}-\sum_{i=1}^{n} p_{i} \log p_{i} 
+= \sum_{i=1}^{n} p_{i} \log \frac{q_{i} }{p_{i} }
+= - D_{KL}(P \| Q)</script><p>以下证明$\sum_{i=1}^{n} p_{i} \log \left(q_{i} / p_{i}\right) \leq 0$:</p>
+<h3 id="法一："><a href="#法一：" class="headerlink" title="法一："></a>法一：</h3><p>已知$ln(x) \leq x-1$,如下图所示：</p>
+<p><img src="https://i.loli.net/2019/05/25/5ce90f6fd78fb14436.png" alt="ln(x) 与 x-1 的数学图像-w50"></p>
+<p>由上图或者严格数学证明可知，当且仅当$x=1$时$ln(x) = x-1$，即等号成立。</p>
+<h3 id="法二："><a href="#法二：" class="headerlink" title="法二："></a>法二：</h3><p>根据<a href="https://www.wikiwand.com/zh/%E5%BB%B6%E6%A3%AE%E4%B8%8D%E7%AD%89%E5%BC%8F" target="_blank" rel="noopener">Jensen不等式</a>在凸积分中的命题：</p>
+<p>若$g$是任意实值可测函数，$\phi$在$g$的值域中是凸函数，则：</p>
+<script type="math/tex; mode=display">
+\phi \left ( \int_{-\infty}^{+\infty} g(x) f(x) dx\right ) \leq 
+ \int_{-\infty}^{+\infty} \phi (g(x)) f(x) dx</script><p>若$g(x)=x$,则上式可简化为一常用特例：</p>
+<script type="math/tex; mode=display">
+\phi \left ( \int_{-\infty}^{+\infty} x f(x) dx\right ) \leq 
+ \int_{-\infty}^{+\infty} \phi (x) f(x) dx</script><p>因此：</p>
+<script type="math/tex; mode=display">
+D_{K L}(p \| q)=-\int p(x) \log \frac{q(x)}{p(x)} d x \geq-\log \int q(x) d x=0</script><p>其中$D_{K L}(p | q)$与Jensen不等式有以下对应关系：</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+& \phi(x) = log(x)\\
+& f(x) = p(x)
+\end{aligned}</script><p>由此得证。</p>
+<hr>
+<h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><ul>
+<li>Gibbs不等式：<a href="https://blog.csdn.net/ACdreamers/article/details/44657745" target="_blank" rel="noopener">相对熵(KL散度)</a></li>
+<li>Jensen不等式: <a href="https://www.wikiwand.com/zh/%E5%BB%B6%E6%A3%AE%E4%B8%8D%E7%AD%89%E5%BC%8F" target="_blank" rel="noopener">Jensen’s inequality</a><ul>
+<li>KL散度正定性的证明：<a href="https://zhuanlan.zhihu.com/p/45131536" target="_blank" rel="noopener">机器学习中的散度</a></li>
+</ul>
+</li>
+<li>KL散度推导：<ul>
+<li><a href="https://blog.csdn.net/wangpeng138375/article/details/78060753" target="_blank" rel="noopener">多变量高斯分布之间的KL散度(KL Divergence)</a></li>
+<li><a href="https://stats.stackexchange.com/questions/60680/kl-divergence-between-two-multivariate-gaussians?noredirect=1&amp;lq=1" target="_blank" rel="noopener">KL divergence between two multivariate Gaussians</a></li>
+<li><a href="https://stats.stackexchange.com/questions/7440/kl-divergence-between-two-univariate-gaussians" target="_blank" rel="noopener">KL divergence between two univariate Gaussians</a></li>
+</ul>
+</li>
+<li>均匀分布与正态分布的KL散度比较：<a href="https://blog.csdn.net/xzy_thu/article/details/71730507" target="_blank" rel="noopener">解释Kullback-Leibler散度</a></li>
+<li>KL散度与交叉熵：<a href="https://blog.csdn.net/witnessai1/article/details/79574812" target="_blank" rel="noopener">KL散度(相对熵)、交叉熵的解析</a></li>
+<li>信息论中的熵：<a href="https://blog.csdn.net/xierhacker/article/details/53463567" target="_blank" rel="noopener">机器学习笔记十：各种熵总结</a></li>
+</ul>
 
       
     </div>
@@ -702,7 +915,7 @@
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
     
-    <a href="https://hsinjhao.github.io/2019/05/16/AnacondaFirstExperience/" title="Anaconda初体验(windows)">https://hsinjhao.github.io/2019/05/16/AnacondaFirstExperience/</a>
+    <a href="https://hsinjhao.github.io/2019/05/22/KL-DivergenceIntroduction/" title="KL散度(Kullback-Leibler Divergence)介绍及详细公式推导">https://hsinjhao.github.io/2019/05/22/KL-DivergenceIntroduction/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li>
@@ -715,9 +928,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Anaconda/" rel="tag"><i class="fa fa-tag"></i> Anaconda</a>
-          
-            <a href="/tags/Deep-Learning/" rel="tag"><i class="fa fa-tag"></i> Deep Learning</a>
+            <a href="/tags/KL-Divergence/" rel="tag"><i class="fa fa-tag"></i> KL-Divergence</a>
           
         </div>
       
@@ -730,15 +941,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2019/05/22/EvaluationCriterionOfImageSegmentation/" rel="next" title="图像分割领域中的评价标准">
+                <i class="fa fa-chevron-left"></i> 图像分割领域中的评价标准
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/05/16/BuildBlogsBasedOnHexoAndGithub/" rel="prev" title="利用hexo和github搭建个人博客的辛酸之路">
-                利用hexo和github搭建个人博客的辛酸之路 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -913,7 +1124,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#安装"><span class="nav-number">2.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#直接更改base-root-环境下的python版本"><span class="nav-number">3.</span> <span class="nav-text">直接更改base(root)环境下的python版本</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Anaconda-Navigator中进行更改"><span class="nav-number">3.1.</span> <span class="nav-text">Anaconda Navigator中进行更改</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Anaconda-Prompt中进行更改"><span class="nav-number">3.2.</span> <span class="nav-text">Anaconda Prompt中进行更改</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Anaconda-Channels-无法更改后的折衷方案"><span class="nav-number">4.</span> <span class="nav-text">Anaconda Channels 无法更改后的折衷方案</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Anaconda安装深度学习框架"><span class="nav-number">5.</span> <span class="nav-text">Anaconda安装深度学习框架</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#准备工作"><span class="nav-number">5.1.</span> <span class="nav-text">准备工作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Anaconda安装Tensorflow"><span class="nav-number">5.2.</span> <span class="nav-text">Anaconda安装Tensorflow</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Anaconda安装Pytorch"><span class="nav-number">5.3.</span> <span class="nav-text">Anaconda安装Pytorch</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装测试"><span class="nav-number">5.4.</span> <span class="nav-text">安装测试</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#结语"><span class="nav-number">6.</span> <span class="nav-text">结语</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#KL散度简介"><span class="nav-number">1.</span> <span class="nav-text">KL散度简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#KL散度定义"><span class="nav-number">2.</span> <span class="nav-text">KL散度定义</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#KL散度的数学性质"><span class="nav-number">3.</span> <span class="nav-text">KL散度的数学性质</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#正定性"><span class="nav-number">3.1.</span> <span class="nav-text">正定性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#不对称性"><span class="nav-number">3.2.</span> <span class="nav-text">不对称性</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#从不同角度解读KL散度"><span class="nav-number">4.</span> <span class="nav-text">从不同角度解读KL散度</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#统计学意义上的KL散度"><span class="nav-number">4.1.</span> <span class="nav-text">统计学意义上的KL散度:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#信息论角度的KL散度"><span class="nav-number">4.2.</span> <span class="nav-text">信息论角度的KL散度:</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#连续随机变量的KL散度推导"><span class="nav-number">5.</span> <span class="nav-text">连续随机变量的KL散度推导</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#服从一维高斯分布的随机变量KL散度"><span class="nav-number">5.1.</span> <span class="nav-text">服从一维高斯分布的随机变量KL散度</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#定义"><span class="nav-number">5.1.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#KL散度推导"><span class="nav-number">5.1.2.</span> <span class="nav-text">KL散度推导</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#服从多元高斯分布的随机变量KL散度"><span class="nav-number">5.2.</span> <span class="nav-text">服从多元高斯分布的随机变量KL散度</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#定义-1"><span class="nav-number">5.2.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#KL散度推导-1"><span class="nav-number">5.2.2.</span> <span class="nav-text">KL散度推导</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#附录"><span class="nav-number">6.</span> <span class="nav-text">附录</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#多元高斯分布下期望证明："><span class="nav-number">6.1.</span> <span class="nav-text">多元高斯分布下期望证明：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Gibbs不等式的证明"><span class="nav-number">6.2.</span> <span class="nav-text">Gibbs不等式的证明</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#法一："><span class="nav-number">6.2.1.</span> <span class="nav-text">法一：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#法二："><span class="nav-number">6.2.2.</span> <span class="nav-text">法二：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考链接"><span class="nav-number">7.</span> <span class="nav-text">参考链接</span></a></li></ol></div>
             
 
           </div>
